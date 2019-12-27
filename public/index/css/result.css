@@ -1,0 +1,353 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #F0F0F0;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 0.7rem;
+}
+.blue_bg{
+    height: 2.4rem;
+    background: #5d3ff9;
+}
+header{
+    position: absolute;
+    width: 100%;
+    padding: 0 0.2rem;
+    top: 0.46rem;
+}
+.logo_box{
+    width: 1.25rem;
+	height: 1.25rem;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0.03rem 0.09rem rgba(96, 96, 96, 0.86);
+    margin: 0 auto 0.2rem;
+    padding-top: 0.18rem;
+    position: relative;
+    z-index: 2;
+}
+.logo_box img{
+    width: 0.7rem;
+    display: block;
+    margin: 0 auto;
+}
+.score_box{
+   background: #fff;
+   border-radius: 0.22rem; 
+   padding: 0.54rem 0.2rem 0.2rem 0.2rem;
+   position: relative;
+    margin-top: -0.7rem;
+}
+.score_top{
+    padding-bottom: 0.2rem;
+    border-bottom: 0.02rem solid #ececec;
+    position: relative;
+}
+.score_left,.score_right{
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.score_left p:nth-child(1){
+    font-size: 0.48rem;
+    color: #151515;
+    margin-top: 0.06rem;
+}
+.score_left p:nth-child(2){
+    font-size: 0.24rem;
+    color: #666666;
+    margin-top: 0.04rem;
+}
+.score_left p:nth-child(2) img{
+    width: 0.18rem;
+    position: relative;
+    top: -0.02rem;
+}
+.score_right p{
+    font-size: 0.24rem;
+    color: #666666;
+    margin-bottom: 0.04rem;
+}
+.score_right p img{
+    width: 0.18rem;
+    position: relative;
+    top: -0.02rem;
+}
+.ver_line{
+    width: 0.02rem;
+	height: 0.92rem;
+    background: #ececec;
+    position: absolute;
+    top: 0.08rem;
+    left: 50%;
+    transform: translateX(-0.01rem);
+}
+.score_top1{
+    margin-top: 0.2rem;
+    border: none;
+    height: 0.9rem;
+    padding-bottom: 0;
+}
+.score_top1 .score_left,.score_top1 .score_right{
+    text-align: left;
+    position: relative;
+    height: 100%;
+}
+.score_left .daikuan_pic,.score_right .daikuan_pic{
+    width: 0.52rem;
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.score_right .daikuan_pic{
+    width: 0.58rem;
+    left: 0.54rem;
+}
+.score_left p.daikuan_ed,.score_right p.daikuan_ed{
+    font-size: 0.28rem;
+    color: #666666;
+    position: absolute;
+    left: 1.65rem;
+    margin-top: 0;
+}
+.score_right p.daikuan_ed{
+    left: 1.4rem;
+}
+.score_left .daikuan_num,.score_right .daikuan_num{
+    font-size: 0.32rem;
+    color: #1e1e1e;
+    position: absolute;
+    left: 1.5rem;
+    top: 0.4rem;
+}
+.score_right .daikuan_num{
+    left: 1.26rem;
+}
+.score_top1 .ver_line{
+    height: 0.72rem;
+}
+.content_box{
+    padding: 0.3rem 0.2rem;
+    margin-top: 2rem;
+}
+.record_list{
+    background: #fff;
+    padding: 0.3rem 0.2rem;
+}
+.record_item,.record_item2{
+    width: 1.9rem;
+    height: 1.86rem;
+    background: #f56f70;
+    border-radius: 0.22rem;
+    float: left;
+    text-align: center;
+}
+.record_item1{
+    width: 2.3rem;
+	height: 1.86rem;
+	background: #8b75fe;
+    border-radius: 0.22rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    float: left;
+    text-align: center;
+}
+.record_item2{
+    background: #ffb300;
+}
+.record_ti{
+    font-size: 0.26rem;
+	line-height: 0.34rem;
+    color: #ffffff;
+    padding-top: 0.34rem;
+}
+.record_pan{
+    font-size: 0.32rem;
+    color: #ffffff;
+    margin-top: 0.1rem;
+}
+.platform{
+    margin-top: 0.3rem;
+    background: #fff;
+    padding: 0.1rem 0.2rem 0 0.2rem;
+}
+.platform_ti{
+    font-size: 0.3rem;
+    color: #333333;
+    font-weight: bold;
+    position: relative;
+}
+.platform_ti:before{
+    content: "";
+    width: 0.04rem;
+	height: 0.28rem;
+    background: #5d3ff9;
+    position: absolute;
+    top: 50%;
+    left: -0.2rem;
+    transform: translateY(-50%);
+}
+.platform ul{
+    margin-top: 0.06rem;
+}
+.platform ul li{
+    border-bottom: 0.02rem solid #f7f7f7;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.16rem 0;
+}
+.platform ul li:last-of-type{
+    border-bottom: none;
+}
+.platform ul li .plat_left{
+    font-size: 0.26rem;
+	color: #666666;
+}
+.platform ul li .plat_left img{
+    width: 0.28rem;
+    margin-right: 0.1rem;
+    position: relative;
+    top: 0.02rem;
+}
+.platform ul li .plat_right{
+    max-width: 15em;
+    font-size: 0.26rem;
+    line-height: 0.34rem;
+    font-weight: bold;
+    color: #333333;
+    text-align: right;
+}
+.comment{
+    margin-top: 0.5rem;
+    padding: 0 0.2rem;
+}
+.comment ul{
+    margin-top: 0.2rem;
+}
+.comment ul li{
+    margin-bottom: 0.3rem;
+}
+.comment ul li .comment_left{
+    width: 0.5rem;
+    float: left;
+}
+.comment ul li .comment_left img{
+    width: 0.44rem;
+    height: 0.44rem;
+    object-fit: cover;
+    float: left;
+}
+.comment ul li .comment_right{
+    width: 6.2rem;
+    float: left;
+}
+.comment ul li .comment_right .username{
+    font-size: 0.26rem;
+    line-height: 0.38rem;
+	color: #795fff;
+}
+.comment ul li .comment_right .username img{
+    width: 0.24rem;
+    float: right;
+    margin-right: 0.1rem;
+    position: relative;
+    top: 0.06rem;
+}
+.comment ul li .comment_right .username .zan_num{
+    font-size: 0.22rem;
+	line-height: 0.38rem;
+    color: #1e1e1e;
+    float: right;
+}
+.comment ul li .comment_right .comment_txt{
+    font-size: 0.28rem;
+	line-height: 0.4rem;
+    color: #1e1e1e;
+    margin-top: 0.1rem;
+}
+.comment ul li .comment_right .comment_time{
+    font-size: 0.22rem;
+    color: #1e1e1e;
+    margin-top: 0.1rem;
+    position: relative
+}
+.comment ul li .comment_right .comment_time span.has_comt{
+    display: inline-block;
+    height: 0.46rem;
+	background: #e8e8e8;
+    border-radius: 0.23rem;
+    padding: 0 0.2rem;
+    line-height: 0.46rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.send_comment{
+    height: 0.9rem;
+    width: 100%;
+    max-width: 750px;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 0 0.4rem;
+}
+.send_cen{
+    height: 0.68rem;
+    margin-top: 0.11rem;
+    position: relative;
+}
+.send_cen textarea{
+    width: 3.68rem;
+	height: 0.68rem;
+	background-color: #f4f5f5;
+    border-radius: 0.34rem;
+    margin-top: 0.11rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 0.3rem;
+    margin: 0;
+    border: none;
+    font-size: 0.26rem;
+    line-height: 0.68rem;
+    color: #1e1e1e;
+    white-space: nowrap;
+}
+.comment_num{
+    font-size: 0.28rem;
+    color: #ffb300;
+    line-height: 0.68rem;
+    position: absolute;
+    left: 4.14rem;
+}
+.comment_num img{
+    width: 0.5rem;
+    vertical-align: middle;
+}
+.send_btn{
+    border: none;
+    font-size: 0.28rem;
+    color: #795fff;
+    position: absolute;
+    right: 0;
+    line-height: 0.68rem;
+}
+.text_tishi{
+    position: absolute;
+    line-height: 0.68rem;
+    left: 1rem;
+    font-size: 0.26rem;
+	color: #1e1e1e;
+}
+.text_tishi .iconfont{
+    font-size: 0.28rem;
+    color: #1e1e1e;
+    position: relative;
+    /* top: 0.14rem; */
+}

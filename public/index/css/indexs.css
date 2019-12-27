@@ -1,0 +1,262 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #F7F7F7;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    min-width: 320px;
+    max-width: 750px;
+    position: fixed;
+    top: 0;
+    /* left: 50%;
+    transform: translateX(-50%); */
+    background: url("../img/blue_bg.png") no-repeat #5F2EFF;
+    background-size: 100%;
+    padding: 0 0.3rem;
+    overflow: auto;
+}
+.content::-webkit-scrollbar {display:none}
+.cont_head{
+    margin-top: 0.66rem;
+}
+.head_left{
+    float: left;
+    width: 1.2rem;
+    height: 0.6rem;
+    background: #389bff;
+    border-radius: 0.6rem;
+    font-size: 0.3rem;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.6rem;
+}
+.head_cen{
+    float: left;
+    width: 3.24rem;
+    height: 0.88rem;
+    background: url("../img/lunbo.png");
+    background-size: 100%;
+    margin-top: -0.1rem;
+    margin-left: 0.7rem; 
+    position: relative;
+}
+.head_cen img{
+    width: 0.28rem;
+    position: absolute;
+    top: 50%;
+    left: 0.24rem;
+    transform: translateY(-50%);
+}
+.head_cen p{
+    white-space: nowrap;
+    font-size: 0.2rem;
+    color: #ffffff;
+    line-height: 0.88rem;
+}
+marquee{
+    width: 2.1rem;
+    margin-left: 0.64rem;
+    display: block;
+}
+.head_right img{
+    float: right;
+    width: 0.6rem;
+}
+.cont_txt{
+    width: 5rem;
+    display: block;
+    margin: 0.4rem auto 0;
+}
+.cont_txt1{
+    width: 3.66rem;
+    display: block;
+    margin: 0.1rem auto 0;
+}
+.cir_box{
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 50%;
+    border: 0.02rem solid #A3A2A3;
+    overflow: hidden;
+    background: #fff;
+    margin-top: 0.9rem;
+    margin-left: 1.42rem; 
+}
+.cir_box ul{
+    width: 2.86rem;
+    height: 2.86rem;
+    border-radius: 50%;
+    border: 0.02rem solid #fff;
+    padding-top: 0.3rem;
+}
+.cir_box li{
+    height: 0.42rem;
+    border-bottom: 0.02rem solid #A3A2A3;
+    line-height: 0.42rem;
+    font-size: 0.2rem;
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: 0.38rem;
+	letter-spacing: 0rem;
+    color: #333333;
+    padding-left: 0.76rem;
+    position: relative;
+}
+.cir_box li img{
+    width: 0.28rem;
+    position: absolute;
+    top: 50%;
+    left: 0.4rem;
+    transform: translateY(-50%);
+}
+.search_tips{
+    font-size: 0.223rem;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0.8rem;
+}
+.mui-input-row{
+    width: 6.44rem;
+    height: 1.08rem;
+    margin: 0.1rem auto;
+}
+#search_ipt{
+    width: 6.44rem;
+	height: 1.08rem;
+	background: #ffbe62;
+    border-radius: 0.1rem;
+    display: block;
+    position: relative;
+    font-size: 0.38rem;
+    padding: 0 0.8rem;
+    line-height: 1.08rem;
+    color: #fff;
+}
+#search_ipt::-webkit-input-placeholder {
+    font-size: 0.38rem;
+    color: #fff;
+}
+#search_ipt:-moz-placeholder {
+    font-size: 0.38rem;
+    color: #fff;
+}
+#search_ipt:-ms-input-placeholder {
+    font-size: 0.38rem;
+    color: #fff;
+}
+.mui-input-row.mui-input-search .mui-icon-clear{
+    width: 0.4rem;
+    height: 0.4rem;
+    top: 50%;
+    right: 2.3rem;
+    transform: translateY(-50%);
+}
+.search_icon{
+    width: 0.4rem;
+    position: absolute;
+    top: 50%;
+    left: 0.3rem;
+    transform: translateY(-50%);
+}
+.search_btn{
+    position: absolute;
+    width: 1.92rem;
+    height: 0.62rem;
+    border-radius: 0.28rem;
+    background: #fff;
+    border: none;
+    top: 50%;
+    right: 0.3rem;
+    transform: translateY(-50%);
+    font-size: 0.36rem;
+    color: #7658fd;
+    display: none;
+}
+.mui-input-row .mui-scroll-wrapper{
+    margin-top: 57px;
+    background: rgb(255, 255, 255);
+    height: 0px;
+}
+.compan{
+    font-size: 0.3rem!important;
+}
+.cover_box{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+    display: none;
+}
+.cover_wrap{
+    width: 6.3rem;
+    height: 8rem;
+    background: url("../img/lawyer/img_tan.png") no-repeat;
+    background-size: 100%;
+    box-shadow: 0rem 0rem 0.2rem 0rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
+    position: absolute;
+    top: 3.4rem;
+    left: 0.6rem;
+    padding-top: 0.6rem;
+}
+.cover_ti1,.cover_ti2{
+    font-size: 0.48rem;
+	font-weight: bold;
+    color: #f8f8fa;
+    margin-left: 1.4rem
+}
+.cover_ti2{
+    margin-left: 0.9rem;
+}
+.cover_ti3{
+    font-size: 0.3rem;
+	font-weight: bold;
+    color: #666666;
+    text-align: center;
+    margin-top: 1.3rem;
+}
+.cover_wrap input{
+    width: 5.2rem;
+	height: 0.88rem;
+	background: #e1e1e1;
+    border-radius: 0.44rem;
+    font-size: 0.24rem;
+	color: #000000;
+    opacity: 0.6;
+    line-height: 0.88rem;
+    padding-left: 0.3rem;
+    border: none;
+    display: block;
+    margin: 0.2rem auto;
+}
+.submit{
+    width: 5.2rem;
+	height: 0.88rem;
+    background-image: linear-gradient(to right, #6f9fff, #a1a7ff);
+    border-radius: 0.44rem;
+    border: none;
+    font-size: 0.36rem;
+	font-weight: 500;
+    color: #ffffff;
+    display: block;
+    margin: 0.7rem auto 0.2rem;
+}
+.cancle{
+    width: 5.2rem;
+	height: 0.88rem;
+	border-radius: 0.44rem;
+    border: solid 0.02rem #5f56e8;
+    font-size: 0.36rem;
+	font-weight: 500;
+    color: #5d56e7;
+    display: block;
+    margin: 0 auto;
+}

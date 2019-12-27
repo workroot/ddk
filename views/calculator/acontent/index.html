@@ -1,0 +1,202 @@
+{extend name="base" /}
+{block name="css"}
+<link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/layui.css">
+<link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/modules/laydate/default/laydate.css">
+<link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/comment.css">
+{/block}
+{block name="body"}
+<div data-warp="comment">
+    <div class="demoTable">
+        <button class="btn_add">添加</button>
+        <button class="layui-btn quandel" style="width: 134px;height: 34px;background-color: #817ee8; border-radius: 8px;border: none;font-size: 16px;font-weight: bold;color: #ffffff;margin: 20px 20px 10px 0;float: left;" data-type="getCheckData">删除</button>
+    </div>
+    <form class="layui-form layui-form-pane" action="{:url('/calculator/acontent/index')}" method="get">
+        <div class="search_box">
+            <input type="text" name="keyword">
+            <span>关键字</span>
+        </div>
+        <div class="search_box layui-input-inline">
+            <input type="text" class="layui-input" id="time" name="ctime">
+            <span>时间</span>
+        </div>
+        <div class="layui-inline">
+            <button class="btn_del">搜索</button>
+        </div>
+    </form>
+    <div class="clearfix"></div>
+    <div class="tab_box">
+        <table class="layui-table" lay-data="{width: 1660, page:true, id:'idTest'}" lay-filter="demo">
+            <thead>
+            <tr>
+                <th lay-data="{type:'checkbox'}"></th>
+                <th lay-data="{field:'id', sort: true, align:'center'}">ID</th>
+                <th lay-data="{field:'title', width:300, align:'center'}">标题</th>
+                <th lay-data="{field:'creat_time', sort: true, align:'center'}">时间</th>
+                <th lay-data="{field:'readers', align:'center'}">阅读数</th>
+                <th lay-data="{field:'sign', align:'center'}">评论数</th>
+                <th lay-data="{field:'experience', sort: true, align:'center'}">购买数</th>
+                <th lay-data="{field:'classify', align:'center'}">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach name="data" item="vo"}
+            <tr>
+                <td lay-data="{type:'checkbox', fixed: 'left'}"></td>
+                <td>{$vo.id}</td>
+                <td>{$vo.title}</td>
+                <td>{$vo.createdAt|date="Y-m-d H:i:s",###}</td>
+                <td>{$vo.browse}</td>
+                <td>{$vo.responses}</td>
+                <td>{$vo.awesome}</td>
+                <td>
+                    <a class="cont_edit" href="javascript:;" data-id="{$vo.id}" lay-event="edit">编辑</a>
+                    <a class="cont_del" href="javascript:;" lay-event="del">删除</a>
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+        <script type="text/html" id="barDemo">
+            <a class="examine" lay-event="detail"><i class="layui-icon layui-icon-ok"></i></a>
+            <a class="unexamine" lay-event="edit"><i class="layui-icon layui-icon-close"></i></a>
+            <a lay-event="del"><i class="layui-icon layui-icon-delete"></i></a>
+        </script>
+    </div>
+</div>
+<!-- 弹窗 -->
+<div class="popup_wrap">
+    <form class="layui-form login-form" style="color:#FFF" action="{:url('/calculator/acontent/add')}" method="post">
+        <div class="popup_cont">
+            <i class="layui-icon layui-icon-close close"></i>
+            <p class="cont_ti">标题</p>
+            <input class="ti_ipt" type="text" name="title" required lay-verify="required" autocomplete="off"
+                   class="layui-input">
+            <p class="cont_ti">内容</p>
+            <textarea name="content" id="edit" cols="30" rows="10" required lay-verify="required" autocomplete="off"
+                      class="layui-input"></textarea>
+            <div class="set_price clearfix">
+                <div class="price">
+                    <p>价格</p>
+                    <input type="text" value="" name="price" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
+                <div class="price">
+                    <p>位置排序</p>
+                    <input type="text" value="1" name="weights">
+                </div>
+                <input type="hidden" name="id" value="" >
+                <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+{block name="js"}
+<script src="__PUBLICS__/calculator/admin/lay/modules/laydate.js"></script>
+<script src="__PUBLICS__/calculator/admin/lay/modules/layedit.js"></script>
+{/block}
+{block name="script"}
+<script>
+    $(function () {
+        laydate.render({
+            elem: '#time',
+            range: true,
+            value: ''
+        });
+
+        $('.quandel').on('click', function () {
+
+
+        });
+
+
+        layui.use('table', function () {
+            var table = layui.table;
+            //监听表格复选框选择
+            //监听工具条
+            table.on('tool(demo)', function (obj) {
+                var data = obj.data;
+                if (obj.event === 'detail') {
+                    layer.msg('ID：' + data.id + ' 的查看操作');
+                } else if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        $.ajax({
+                            url: '{:url("/calculator/acontent/delete")}',
+                            type: 'post',
+                            data: {'id': data.id},
+                            dataType: 'json',
+                            success: function (json) {
+                                obj.del(index);
+                            }
+                        });
+                        layer.close(index);
+                    });
+                } else if (obj.event === 'edit') {
+                    //layer.alert('编辑行：<br>' + JSON.stringify(data))
+					var id = $(this).attr('data-id');
+					$this = $(".popup_wrap");
+					$this.show();
+					$this.children('form').attr('action',"{:url('/calculator/acontent/update')}");
+					$.ajax({
+						url:'{:url("/calculator/acontent/tai")}',
+						type:'post',
+						data:{id:id},
+						dataType:'json',
+						success:function(json){
+							$('input[name="title"]').val(json.data.data.title);
+							$('textarea[name="content"]').val(json.data.data.content);
+							$('input[name="price"]').val(json.data.data.price);
+							$('input[name="weights"]').val(json.data.data.weights);
+							$('input[name="id"]:hidden').val(json.data.data.id);
+						}
+					});
+                }
+            });
+
+            var $ = layui.$, active = {
+                getCheckData: function () { //获取选中数据
+                    var checkStatus = table.checkStatus('idTest')
+                        , data = checkStatus.data;
+                    var id = [];
+                    $(data).each(function(i,n) {
+                         id[i] = n.id;
+                    });
+                    layer.confirm('真的删除行么', function (index) {
+                        $.ajax({
+                            url: '{:url("/calculator/acontent/deletes")}',
+                            type: 'post',
+                            data: {'id':id.join(',')},
+                            dataType: 'json',
+                            success: function (json) {
+                                window.location.href = '/calculator/acontent/index';
+                            }
+                        });
+                        layer.close(index);
+                    });
+                }
+                , getCheckLength: function () { //获取选中数目
+                    var checkStatus = table.checkStatus('idTest')
+                        , data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                }
+                , isAll: function () { //验证是否全选
+                    var checkStatus = table.checkStatus('idTest');
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选')
+                }
+            };
+
+            $('.demoTable .layui-btn').on('click', function () {
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+        });
+        $(".btn_add").click(function () {
+            $(".popup_wrap").show()
+        });
+
+        $(".close").click(function () {
+            $(".popup_wrap").hide()
+        })
+    })
+</script>
+{/block}

@@ -1,0 +1,110 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('backend/agent/index')}">代理商类型管理</a></li>
+            <li class=""><a href="{:url('backend/agent/add')}">添加代理商类型</a></li>
+            <li class="layui-this">编辑代理商类型</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('backend/agent/update')}" method="post">
+				
+				
+				
+				<div class="layui-form-item">
+                        <label class="layui-form-label">代理商类型名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="agent_name" value="{$agent.agent_name}" required lay-verify="required" placeholder="请输入代理商类型名称" class="layui-input">
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">可否oem名称</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_name" value="1" title="启用" {if condition="$agent.isoem_name==1"} checked="checked"{/if}>
+                            <input type="radio" name="isoem_name" value="0" title="禁用" {if condition="$agent.isoem_name==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+                   <div class="layui-form-item">
+                        <label class="layui-form-label">oem名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="rename" value="{$agent.rename}"   placeholder="自定义OEM名称" class="layui-input">
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">是否开启自定义</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_ewm" value="1" title="开启" {if condition="$agent.isoem_ewm==1"} checked="checked"{/if}>
+                            <input type="radio" name="isoem_ewm" value="0" title="不开启" {if condition="$agent.isoem_ewm==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">可否开启二维码</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isopen_ewmo" value="1" title="启用" {if condition="$agent.isopen_ewmo ==1"} checked="checked"{/if}>
+                            <input type="radio" name="isopen_ewmo" value="0" title="禁用" {if condition="$agent.isopen_ewmo ==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+					  <div class="layui-form-item">
+                        <label class="layui-form-label">二维码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="thumb" value="{$agent.thumb}" class="layui-input layui-input-inline" placeholder="二维码" id="thumb">
+                            <input type="file" name="file" class="layui-upload-file">
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">可否oem价格</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_price" value="1" title="可以" {if condition="$agent.isoem_price==1"} checked="checked"{/if}>
+                            <input type="radio" name="isoem_price" value="0" title="不可以" {if condition="$agent.isoem_price==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">可否oem标题</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_title" value="1" title="可以" {if condition="$agent.isoem_title==1"} checked="checked"{/if}>
+                            <input type="radio" name="isoem_title" value="0" title="不可以" {if condition="$agent.isoem_title==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">可否oem说明</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_marks" value="1" title="可以" {if condition="$agent.isoem_marks==1"} checked="checked"{/if}>
+                            <input type="radio" name="isoem_marks" value="0" title="不可以" {if condition="$agent.isoem_marks==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否开启微信分享</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="is_share" value="1" title="开启" {if condition="$agent.is_share==1"}  checked="checked"{/if}>
+                            <input type="radio" name="is_share" value="0" title="不开启"  {if condition="$agent.is_share==0"}  checked="checked"{/if}>
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">通话数量</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="nums" value="{$agent.nums}" lay-verify="number" placeholder="数量" class="layui-input">
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="descc" value="{$agent.descc}" lay-verify="number" placeholder="排序" class="layui-input">
+                        </div>
+                    </div>
+					
+					<div class="layui-form-item">
+                        <div class="layui-input-block">
+                             <input type="hidden" name="id" value="{$agent.id}">
+							<button class="layui-btn" lay-submit lay-filter="*">更新</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

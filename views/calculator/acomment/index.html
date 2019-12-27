@@ -1,0 +1,113 @@
+{extend name="base" /}
+{block name="css"}
+<link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/layui.css">
+<link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/modules/laydate/default/laydate.css">
+<link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/comment.css">
+{/block}
+{block name="body"}
+<div class="layui-body">
+    <div class="layui-fluid">
+            <div class="search_box">
+                <input type="text">
+                <span>搜索</span>
+            </div>
+            <div class="search_box layui-input-inline">
+                <input type="text" class="layui-input" id="time">
+                <span>时间</span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="tab_box">
+                <table class="layui-table" lay-data="{width: 1660, page:true, id:'idTest'}" lay-filter="demo">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'checkbox'}"></th>
+                        <th lay-data="{field:'id', sort: true, align:'center'}">ID</th>
+                        <th lay-data="{field:'username', width:300, align:'center'}">审核内容</th>
+                        <th lay-data="{field:'sex', sort: true, align:'center'}">审核时间</th>
+                        <th lay-data="{field:'city', align:'center'}">手机号</th>
+                        <th lay-data="{field:'experience', sort: true, align:'center'}">审核状态</th>
+                        <th lay-data="{field:'classify', align:'center'}">操作</th>
+                        <th lay-data="{fixed: 'right', align:'center', toolbar: '#barDemo'}">审核</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="data" item="vo"}
+                    <tr>
+                        <td lay-data="{type:'checkbox', fixed: 'left'}"></td>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.content}</td>
+                        <td>{$vo.createdAt|date="Y-m-d H:i:s",###}</td>
+                        <td>{$vo.mobile}</td>
+                        <td>{if condition = "isset($vo.status) and $vo.status == 1"}已审核{else/}未审核{/if}</td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+                <script type="text/html" id="barDemo">
+                    <a class="examine" lay-event="detail"><i class="layui-icon layui-icon-ok"></i></a>
+                    <a class="unexamine" lay-event="edit"><i class="layui-icon layui-icon-close"></i></a>
+                    <a lay-event="del"><i class="layui-icon layui-icon-delete"></i></a>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__PUBLICS__/calculator/admin/lay/modules/laydate.js"></script>
+
+{/block}
+{block name="script"}
+<script>
+    $(function(){
+        laydate.render({
+            elem: '#time',
+            range: true,
+            value: '2019-09-16 - 2019-09-17'
+        });
+        layui.use('table', function(){
+            var table = layui.table;
+            //监听表格复选框选择
+            table.on('checkbox(demo)', function(obj){
+                console.log(obj)
+            });
+            //监听工具条
+            table.on('tool(demo)', function(obj){
+                var data = obj.data;
+                if(obj.event === 'detail'){
+                    layer.msg('ID：'+ data.id + ' 的查看操作');
+                } else if(obj.event === 'del'){
+                    layer.confirm('真的删除行么', function(index){
+                        obj.del();
+                        layer.close(index);
+                    });
+                } else if(obj.event === 'edit'){
+                    layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                }
+            });
+
+            var $ = layui.$, active = {
+                getCheckData: function(){ //获取选中数据
+                    var checkStatus = table.checkStatus('idTest')
+                        ,data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                }
+                ,getCheckLength: function(){ //获取选中数目
+                    var checkStatus = table.checkStatus('idTest')
+                        ,data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                }
+                ,isAll: function(){ //验证是否全选
+                    var checkStatus = table.checkStatus('idTest');
+                    layer.msg(checkStatus.isAll ? '全选': '未全选')
+                }
+            };
+
+            $('.demoTable .layui-btn').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+        });
+    })
+</script>
+{/block}

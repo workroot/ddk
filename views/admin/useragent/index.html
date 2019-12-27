@@ -1,0 +1,154 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">代理商管理</li>
+            <li class=""><a href="{:url('/backend/useragent/add')}">添加代理商</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                <form class="layui-form layui-form-pane" id="myform" action="{:url('/backend/useragent/index')}" method="get">
+				<!--<a class="layui-btn layui-btn-normal layui-btn-radius" target="_blank" href="{:url('admin/user/getAll',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">组织架构图</a>-->
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input start_time" name="startTime" id="date1" value="{$startTime}">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">结束时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input end_time" name="endTime" id="date2" value="{$endTime}">
+                        </div>
+                    </div>
+						
+                    <div class="layui-inline">
+                      
+						 <div class="layui-inline">
+									<button onclick="search()" class="layui-btn">搜索</button>
+					</div>
+                       <div class="layui-inline">
+									<button onclick="excel()" class="layui-btn">导出EXCEL</button>
+								</div>
+                    </div>
+                </form>
+                <hr>
+
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>姓名</th>
+                        <th>手机</th>
+                        <th>代理类型</th>
+                        <th>推荐人</th>
+                        <th>有效</th>
+                        <th>余额</th>
+                        <th>总业绩</th>
+                        <th>备注</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+                        <th>是否添加微信</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="user_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.names}</td>
+                        <td>{$vo.mobile}</td>
+                      	<td>{$vo.agent_name}</td>
+                      	<td>{$vo.pnames}</td>
+                        <td>{php}echo $vo['status']==1 ? '启用' : '禁用';{/php}</td>
+                        <td>{$vo.money}</td>
+                        <td>{$vo.total_achievement}</td>
+                        <td>{$vo.note}</td>
+                        <td>{$vo.create_time}</td>
+                        <td><a href="{:url('backend/useragent/index',['total_achievement'=>$vo['total_achievement'] > 0 ? 1 : 0])}" style="color: #4b9ffa;">{php}echo $vo['total_achievement']>0 ? '有效' : '无效';{/php}</a></td>
+                        <td>
+                            {if condition="isset($vo.iswx) and $vo.iswx eq 1"}
+                            <a  data-id= "{$vo['id']}" data-iswx = '0' class="layui-btn layui-btn-normal layui-btn-mini iswxs">已添加</a>
+                            {else/}
+                            <a  data-id= "{$vo['id']}" data-iswx = '1' class="layui-btn layui-btn-danger layui-btn-mini iswx">未添加</a>
+                            {/if}
+                        </td>
+                        <td>
+                         	<a href="{:url('backend/useragent/selxia',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">查下级</a>
+                            <a href="{:url('backend/useragent/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                            <a href="{:url('backend/useragent/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+					<div style="float:right; font-size:20px;"> 今日注册代理数：{$countjin} 其中有效代理：{$countyouxiaojin}  | 代理总人数：{$count}其中有效代理：{$countyouxiao}</div>
+                <!--分页-->
+                {$user_list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script src="/public/layer/layer.js"></script>
+<script>
+  
+  $(document).ready(function(){
+        $('.iswx').on('click',function(){
+            var id = $(this).attr('data-id');
+            var iswx = $(this).attr('data-iswx');
+            wx(id,iswx);
+        })
+
+        $('.iswxs').on('click',function(){
+            var id = $(this).attr('data-id');
+            var iswx = $(this).attr('data-iswx');
+            wx(id,iswx);
+        })
+    });
+
+    function wx(id,iswx){
+        $.ajax({
+            url:'{:url("backend/useragent/iswx")}',
+            type:'post',
+            data:{'id':id,'iswx':iswx},
+            dataType:'json',
+            success : function(json){
+                if(json){
+                    layer.msg('成功',{time:500},function(){
+                        var pageURL = $(location).attr("href");
+                        window.location.href = pageURL;
+                    });
+                }else{
+                    layer.msg('失败');
+                }
+            }
+        })
+    }
+  
+  
+  
+    function addOne(){
+		$.get("{:url('backend/useragent/form')}",function(data){
+			$(".form_customer:first").prepend(data);
+			form.render('select');
+		});
+	}
+	function excel(){
+		 $("#myform").attr('action',"{:url('backend/useragent/excel')}");
+	}
+	function search(){
+		 $("#myform").attr('action',"{:url('backend/useragent/index')}");
+	}
+</script>
+{/block}

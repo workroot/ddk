@@ -1,0 +1,88 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('backend/note/index')}">文章管理</a></li>
+            <li class="layui-this">添加文章</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('backend/note/save')}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" value="" required lay-verify="required" placeholder="请输入姓名" class="layui-input">
+                        </div>
+                    </div>
+					 <div class="layui-form-item">
+                        <label class="layui-form-label">缩略图</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="thumb" value="" class="layui-input layui-input-inline" id="thumb">
+                            <button type="button" class="layui-btn" id="file_upload" data-type="2" style="height: 38px;"><i class="layui-icon">&#xe67c;</i>上传图片</button>
+                        </div>
+                    </div>
+					 <div class="layui-form-item">
+                        <label class="layui-form-label">简介</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="jianjie" value="" required lay-verify="required" placeholder="请输入简介" class="layui-input">
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="descc" value="" required lay-verify="required" placeholder="排序" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">类型</label>
+                        <div class="layui-input-block">
+                            <select name="tid" lay-verify="required">
+                                <option value="0">无类型</option>
+                                {foreach name="note_list" item="vo"}
+                                <option value="{$vo.id}">{$vo.tname}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">类别</label>
+                        <div class="layui-input-block">
+                            <select name="types" lay-verify="required">
+                                {foreach name="articleType" item="vo" }
+                                    <option value="{$key}">{$vo}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="margin-left: 12px;">
+                        <div class="layui-input-block">
+                            <textarea id="container" name="content" cols="30" rows="15" style="width:100%; margin: 0 auto;"></textarea>
+                        </div>
+                    </div>
+
+
+                    
+    				 <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+				    <!-- 编辑器源码文件 -->
+				    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.js?=132"></script>
+				    <!-- 实例化编辑器 -->
+				    <script type="text/javascript">
+				        var ue = UE.getEditor('container', {
+				            autoHeightEnabled:false,
+				            initialFrameHeight:425
+				        });
+				    </script>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,127 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #f4f4f4;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.bind_alipay{
+    background: #fff;
+    padding: 0.2rem;
+    display: none;
+}
+.bind_alipay img{
+    width: 0.6rem;
+    display: block;
+    margin: 0 auto 0.2rem;
+}
+.bind_alipay input{
+    width: 100%;
+    height: 0.96rem;
+    line-height: 0.76rem;
+    border: none;
+    border-bottom: 0.02rem solid #f4f4f4;
+    padding: 0.1rem 0.2rem;
+    margin: 0;
+    float: left;
+    font-size: 0.36rem;
+}
+.bind_btn{
+    width: 3.44rem;
+	height: 0.8rem;
+	background-color: #7785eb;
+    border-radius: 0.1rem;
+    font-size: 0.36rem;
+    color: #ffffff;
+    border: none;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.withdrawal_box{
+    background: #fff;
+    padding: 0.2rem 0.2rem 0.1rem 0.2rem;
+}
+.withdrawal_ti{
+    font-size: 0.32rem;
+	color: #333333;
+}
+.withdrawal_money{
+    font-size: 0.42rem;
+    color: #333333;
+    margin-top: 0.3rem;
+    border-bottom: 0.02rem solid #f4f4f4;
+    line-height: 0.6rem;
+}
+.withdrawal_money span{
+    position: relative;
+    top: 0.04rem;
+}
+.withdrawal_money input{
+    border: none;
+    padding: 0.1rem;
+    width: 80%;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    margin-bottom: 0;
+}
+.remainder_num{
+    font-size: 0.28rem;
+	line-height: 0.76rem;
+	color: #666666;
+}
+.withdrawal_way{
+    height: 0.94rem;
+    line-height: 0.94rem;
+    background: #fff!important;
+    margin-top: 0.2rem;
+    padding: 0 0.4rem 0 0.76rem;
+    position: relative;
+    font-size: 0.3rem;
+    color: #333;
+}
+.withdrawal_way img{
+    width: 0.36rem;
+    position: absolute;
+    top: 50%;
+    left: 0.2rem;
+    transform: translateY(-50%);
+}
+.withdrawal_way span{
+    color: #666666;
+    margin-left: 0.2rem;
+}
+.withdrawal_way .iconfont{
+    font-size: 0.36rem;
+    color: #666;
+    position: absolute;
+    top: 50%;
+    right: 0.4rem;
+    transform: translateY(-50%);
+}
+.withdrawal_way .iconfont.active{
+    color: #D81E06;
+}
+.to_bank{
+    font-size: 0.3rem;
+    color: #7785eb;
+    text-align: right;
+    margin-top: 0.14rem;
+    padding-right: 0.3rem;
+}
+.to_bank a{
+    color: #7785eb;
+}
+.sure_btn{
+    width: 3.44rem;
+	height: 0.8rem;
+	background-color: #7785eb;
+    border-radius: 0.1rem;
+    font-size: 0.36rem;
+    color: #ffffff;
+    border: none;
+    display: block;
+    margin: 1rem auto 0.2rem;
+}

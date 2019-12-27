@@ -1,0 +1,109 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">查询管理</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form layui-form-pane" id="myform" action="{:url('backend/inquire/index')}" method="get">
+                    <!--<a class="layui-btn layui-btn-normal layui-btn-radius" target="_blank" href="{:url('admin/user/getAll',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">组织架构图</a>-->
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{if condition="isset($params['keyword'])"}{$params['keyword']}{/if}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input start_time" name="date1" id="date1" value="{if condition="isset($params['date1'])"}{$params['date1']}{/if}">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">结束时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input end_time" name="date2" id="date2" value="{if condition="isset($params['date2'])"}{$params['date2']}{/if}">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <button onclick="search()" class="layui-btn">搜索</button>
+                    </div>
+                    <div class="layui-inline">
+                        <button onclick="excel()" class="layui-btn">导出EXCEL</button>
+                    </div>
+                </form>
+                <hr>
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th>付款场景</th>
+                        <th>版本</th>
+                        <th>查询人手机</th>
+                        <th>推荐人</th>
+                        <th>查询时间</th>
+                        <th>价格</th>
+                        <th>渠道</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="data" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{php}echo $vo['source']==2 ? '<span style="color:green;">支付宝</span>' : '<span style="color:red;">微信</span>';{/php}</td>
+                        <td>{$vo.p_name}</td>
+                        <td>{$vo.mobile}</td>
+                        <td><a href="{:url('/backend/useragent/index',['uid'=>$vo['tid']])}" style="color: #4b9ffa;">{$vo.tname}</a></td>
+                        <td>{$vo.createdAt|date="Y-m-d H:i:s",###}</td>
+                        <td>{$vo.price}</td>
+                        <td><a href="{:url('/backend/useragent/index',['uid'=>$vo['aid']])}" style="color: #4b9ffa;">{$vo.aname}</a></td>
+                        <td>
+                            <a href="{:url('backend/platform/index',['id'=>$vo['cid']])}"><span data-id="{$vo.id}" class="detail layui-btn layui-btn-normal layui-btn-mini">详情</span></a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+                <div style="float:right; font-size:20px;"> 今日人数：{$statistics['countjin']} | 今日金额：{$statistics['sumjin']} 元 | 用户人数：{$statistics['count']} | 金额：{$statistics['sum']} 元</div>
+                <!--分页-->
+                {$data->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    $(function(){
+        $('.detail').click(function(){
+            var THIS = $(this);
+            var id = THIS.data('id');
+            $.post("{:url('backend/inquire/checkid')}",{'id':id},function(res){
+                if(res == 1){
+                    alert('报告超过7天，数据已清理');return false;
+                }
+                else{
+                    window.location.href="{:url('backend/inquire/xiangqing')}?id="+id;
+                }
+            })
+        })
+    })
+    function addOne(){
+        $.get("{:url('backend/inquire/form')}",function(data){
+            $(".form_customer:first").prepend(data);
+            form.render('select');
+        });
+    }
+    function excel(){
+        $("#myform").attr('action',"{:url('backend/inquire/excel')}");
+    }
+    function search(){
+        $("#myform").attr('action',"{:url('backend/inquire/index')}");
+    }
+</script>
+{/block}

@@ -1,0 +1,329 @@
+{extend name="base" /}
+{block name="css"}
+<link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/layui.css">
+<link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/index.css">
+{/block}
+{block name="body"}
+
+
+<div class="layui-body">
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <div class="index_top clearfix">
+                {volist name="data.statistics" id="v"}
+                <div class="layui-col-xs6 layui-col-sm6 layui-col-md3">
+
+                    <div class="statistics">
+                        <p class="statistics_ti">
+                            {if condition = "isset($v.type) and $v.type == 1"}
+                            当天数据统计
+                            {elseif condition="isset($v.type) and $v.type == 2"/}
+                            本周数据统计
+                            {elseif condition="isset($v.type) and $v.type == 3"/}
+                            当月数据统计
+                            {elseif condition="isset($v.type) and $v.type == 4"/}
+                            总数据统计
+                            {/if}
+                        </p>
+                        <div class="statistics_bot layui-row">
+                            <div class="layui-col-md6">
+                                <div class="statistics_item">
+                                    <p>已完成订单</p>
+                                    <p>{if condition="isset($v.awesome) && !empty($v.awesome)"}{$v.awesome}{else/}0{/if}</p>
+                                </div>
+                            </div>
+                            <div class="layui-col-md6">
+                                <div class="statistics_item">
+                                    <p>注册人数</p>
+                                    <p>{if condition="!empty($v.awesome) || !empty($v.registered)"}{$v.awesome + $v.registered}{else/}0{/if}</p>
+                                </div>
+                            </div>
+                            <div class="layui-col-md6">
+                                <div class="statistics_item">
+                                    <p>评论人数</p>
+                                    <p>{if condition="isset($v.responses) && !empty($v.responses)"}{$v.responses}{else/}0{/if}</p>
+                                </div>
+                            </div>
+                            <div class="layui-col-md6">
+                                <div class="statistics_item">
+                                    <p>访问人数</p>
+                                    <p>{if condition="isset($v.browse) && !empty($v.browse)"}{$v.browse}{else/}0{/if}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+
+            </div>
+            <div class="order_box">
+                <div class="layui-col-xs12 layui-col-sm8 layui-col-md8 order_left">
+                    <div id="completed"></div>
+                    <div id="unfulfilled"></div>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm4 layui-col-md4">
+                    <div class="order_ri1">
+                        <div id="orderPay"></div>
+                    </div>
+                    <div class="order_ri1 order_ri2">
+                        <div id="orderFinish"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+{/block}
+{block name="script"}
+<script>
+    $(function () {
+        function completed() {
+            var dom = document.getElementById("completed");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = {
+                title: {
+                    text: '已完成订单',
+                    textStyle: {
+                        color: '#3b3b3b'
+                    },
+                    padding: [0, 0, 0, 0]  // 位置
+                },
+                color: ['#ffc851', '#51b3ff', '#516eff'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['0单-150单', '151单-300单', '301单-更多']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data:{$data.data.time|json_encode},
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        scale: true,
+                        min: 0,
+                        name: '2019',    // 轴名称
+                        nameLocation: 'start',  // 轴名称相对位置
+                    }
+                ],
+                series: [
+                    {
+                        name: '0单-150单',
+                        type: 'bar',
+                        stack: '总量',
+                        barWidth: 30,
+                        data: {$data.data.single1|json_encode}
+                    },
+                    {
+                        name: '151单-300单',
+                        type: 'bar',
+                        stack: '总量',
+                        barWidth: 30,
+                        data: {$data.data.single2|json_encode}
+                    },
+                    {
+                        name: '301单-更多',
+                        type: 'bar',
+                        stack: '总量',
+                        barWidth: 30,
+                        data: {$data.data.single3|json_encode}
+                    }
+                ]
+            };
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+
+        completed();
+
+        function unfulfilled() {
+            var dom = document.getElementById("unfulfilled");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = {
+                title: {
+                    text: '未完成订单',
+                    textStyle: {
+                        color: '#3b3b3b'
+                    },
+                    padding: [0, 0, 0, 0]  // 位置
+                },
+                color: ['#ffc851', '#51b3ff', '#516eff'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['0单-150单', '151单-300单', '301单-更多']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: {$data.data.time|json_encode},
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        scale: true,
+                        min: 0,
+                        name: '2019',    // 轴名称
+                        nameLocation: 'start',  // 轴名称相对位置
+                    }
+                ],
+                series: [
+                    {
+                        name: '0单-150单',
+                        type: 'bar',
+                        stack: '总量',
+                        barWidth: 30,
+                        data: {$data.data.countjin1|json_encode}
+                    },
+                    {
+                        name: '151单-300单',
+                        type: 'bar',
+                        stack: '总量',
+                        barWidth: 30,
+                        data: {$data.data.countjin2|json_encode}
+                    },
+                    {
+                        name: '301单-更多',
+                        type: 'bar',
+                        stack: '总量',
+                        barWidth: 30,
+                        data: {$data.data.countjin3|json_encode}
+                    }
+                ]
+            };
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+
+        unfulfilled()
+
+        function orderPay() {
+            var dom = document.getElementById("orderPay");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = {
+                title: {
+                    text: '已支付与待支付对比图',
+                    x: 'left'
+                },
+                color: ['#ffc851', '#817ee8'],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    top: 40,
+                    data: ['未完成订单', '已完成订单']
+                },
+                series: [
+                    {
+                        type: 'pie',
+                        radius: '55%',
+                        center: ['62%', '60%'],
+                        data: [
+                            {value: '{$data.sums_tim}', name: '未完成订单'},
+                            {value: '{$data.sums}', name: '已完成订单'}
+                        ],
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+
+        orderPay()
+
+        function orderFinish() {
+            var dom = document.getElementById("orderFinish");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = {
+                title: {
+                    text: '已完成订单对比图',
+                    x: 'left'
+                },
+                color: ['#ffc851', '#817ee8'],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    top: 40,
+                    data: ['今日完成订单', '昨日完成订单']
+                },
+
+                series: [
+                    {
+                        type: 'pie',
+                        radius: '55%',
+                        center: ['62%', '60%'],
+                        data: [
+                            {value: {$data.data.single1.0}, name: '今日完成订单'},
+                            {value:  {$data.data.single1.1}, name: '昨日完成订单'}
+                        ],
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+
+        orderFinish()
+        $("canvas").css({"width": "100%"});
+        $("canvas").parent().css({"width": "100%"});
+    })
+</script>
+{/block}

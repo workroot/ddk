@@ -1,0 +1,172 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #fff;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    min-width: 320px;
+    max-width: 750px;
+    /* position: fixed;
+    left: 50%;
+    transform: translateX(-50%); */
+    background: url("../img/beijing.png") no-repeat #fff;
+    background-size: 100%;
+    padding-top: 0.5rem;
+}
+.logo_box{
+    width: 1.25rem;
+	height: 1.25rem;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0.03rem 0.09rem rgba(96, 96, 96, 0.86);
+    margin: 0 auto 0.2rem;
+    position: relative;
+}
+.logo_box img{
+    width: 0.72rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.platform_name{
+    text-align: center;
+    font-size: 0.32rem;
+    color: #636363;
+    font-weight: 700;
+}
+.saomiao{
+    font-size: 0.28rem;
+    color: #4c4c4c;
+    text-align: center;
+    margin-top: 0.1rem;
+}
+.saomiao img{
+    width: 0.3rem;
+    margin-right: 0.18rem;
+    position: relative;
+    top: 0.04rem;
+}
+.saomiao_list{
+    width: 6.56rem;
+	border-radius: 0.23rem;
+    background: rgba(221, 215, 255, 0.1);
+    margin: 0.1rem auto;
+    padding: 0.14rem 0.28rem;
+}
+.saomiao_list li{
+    margin-bottom: 0.2rem;
+}
+.saomiao_list li:last-of-type{
+    margin-bottom: 0;
+}
+.list_left{
+    float: left;
+    font-size: 0.26rem;
+	color: #333333;
+}
+.list_left img{
+    width: 0.25rem;
+    margin-right: 0.14rem;
+    position: relative;
+    top: 0.02rem;
+}
+.list_right{
+    float: right;
+    font-size: 0.3rem;
+	color: #999999;
+}
+.list_right img{
+    width: 0.23rem;
+    margin-right: 0.14rem;
+    position: relative;
+    top: 0.02rem;
+}
+.pay_bot{
+    margin-top: 0.24rem;
+    margin-bottom: 0.2rem;
+}
+.bot_left,.bot_right{
+    width: 49%;
+    height: 0.8rem;
+    background: linear-gradient(to right,#5d3ffa,#57affa);
+    text-align: center;
+    line-height: 0.8rem;
+    font-size: 0.36rem;
+    color: #ffffff;
+    float: left;
+}
+.bot_right{
+    float: right;
+    background: linear-gradient(to right,#ffab37,#fd6b05);
+}
+.cover{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.28);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: none;
+}
+.cover_box{
+    width: 5.3rem;
+    height: 4.42rem;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 0.3rem 0.5rem;
+}
+.cover_ti{
+    font-size: 0.32rem;
+    color: #333333;
+    text-align: center;
+}
+.jiance_item{
+    width: 33.33%;
+    float: left;
+    text-align: center;
+}
+.jiance_item img{
+    width: 0.74rem;
+    display: block;
+    margin: 0.24rem auto 0.12rem;
+}
+.jiance_item p{
+    font-size: 0.26rem;
+	color: #333333;
+}
+.cover_tips{
+    font-size: 0.26rem;
+	line-height: 0.36rem;
+    color: #fe8a1e;
+    margin-top: 0.34rem;
+}
+.cover_bot{
+    margin-top: 0.2rem;
+}
+.cover_bot button{
+    width: 1.71rem;
+	height: 0.67rem;
+    border-radius: 0.07rem;
+    font-size: 0.26rem;
+}
+.cover_bot button.give_up{
+    border: solid 0.02rem #dadada;
+    float: left;
+    color: #999;
+}
+.cover_bot button.continue{
+    background: #7785eb;
+    float: right;
+    color: #fff;
+    border: none;
+}

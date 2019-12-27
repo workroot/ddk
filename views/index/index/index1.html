@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>首页</title>
+    <link href="__ICSS__/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="__ICSS__/index.css?v=789456">
+</head>
+<style>
+    .mui-table-view{
+        font-size: 14px;
+        background-color:transparent;
+    }
+
+    .mui-table-view:before{
+        background-color: transparent;
+    }
+
+    .mui-table-view:after{
+        background-color: transparent;
+    }
+
+    .mui-table-view-cell:after{
+        right: 18px;
+    }
+
+    .mui-table-view-cell>a:not(.mui-btn).mui-active {
+        background-color: transparent;
+    }
+
+    .mui-search.mui-active:before{
+        top: 33px;
+    }
+
+    .mui-input-row.mui-search .mui-icon-clear{
+        top: 15px;
+        right: 25%;
+    }
+
+    .mui-input-row .mui-btn{
+        line-height: 1.1;
+        float: right;
+        margin-top: -40px;
+        margin-right: 9px;
+        width: 24%;
+        padding: 7px 8px;
+    }
+
+</style>
+<body>
+<nav class="mui-bar mui-bar-tab index-f">
+    <a class="mui-tab-item mui-active">
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item">
+        <span class="mui-icon mui-icon-phones"></span>
+        <span class="mui-tab-label">论坛</span>
+    </a>
+    <a class="mui-tab-item">
+        <span class="mui-icon mui-icon-emails"></span>
+        <span class="mui-tab-label">咨询</span>
+    </a>
+    <a class="mui-tab-item">
+        <span class="mui-icon mui-icon-gears"></span>
+        <span class="mui-tab-label">我的</span>
+    </a>
+</nav>
+<div class="mui-content index-fs" style="padding-bottom:200px;">
+    <div class="index-had">
+        <a class="fx"><img src="__IIMG__/fx.png"></a>
+        <a class="phb"><img src="__IIMG__/ph.png"><span>排行榜</span></a>
+    </div>
+    <div class="index-w">
+        <p>网贷上不上征信 ?<p style="margin-top: 12%;margin-right: 8%;">一查便知</p>
+        </p>
+    </div>
+    <div class="mui-input-row" style="overflow: initial;">
+        <form action="">
+            <div class="mui-input-row mui-search">
+                <input type="search" class="mui-input-clear" id="se" name="company" oninput = "search()" style="border-radius:22px;width: 100%;" placeholder="请输入网贷名称">
+            </div>
+            <button type="button" class="mui-btn mui-btn-royal" id="royal" data-loading-icon="mui-spinner mui-spinner-custom" style="display:none">立即查询</button>
+        </form>
+        <div class="mui-scroll-wrapper" style="margin-top:50px;background: #fff;border: 1px solid #ccc;">
+            <div class="mui-scroll">
+                <ul class="mui-table-view compan">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="__IJS__/jquery.min.js"></script>
+<script src="__IJS__/mui.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    search();
+    mui.init();
+    window.onload = function() {
+        mui('.mui-scroll-wrapper').scroll({
+            deceleration: 0.0005, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+            bounce: true, //滚动条是否有弹力默认是true
+            indicators: false, //是否显示滚动条,默认是true
+        });
+    };
+
+
+    $(document).ready(function(){
+        $('#royal').on('click',function(){
+            var companys = $("#se").val();
+            $.ajax({
+                url:"{:url('/index/index/findOne')}",
+                type:"post",
+                dataType:"json",
+                data:{comp:companys},
+                success:function(json){
+                    if(json.code == 0){
+                        window.location.href = json.data.redirect;
+                    }else{
+                        window.location.href = json.data.redirect;
+                    }
+                }
+            })
+        })
+    });
+
+
+
+    function search(){
+        var company = $("#se").val();
+        $(".mui-btn-royal").css('display','block');
+        if($("#se").val() == ''){
+            $(".mui-btn-royal").css('display','none');
+            $('.compan').html('');
+            $('.mui-scroll-wrapper').css('height','0px');
+        }else{
+            $.ajax({
+                url:"{:url('/api/index/index')}",
+                type:"post",
+                dataType:"json",
+                data:{company:company},
+                success:function(json){
+                    if(json.code == 0){
+                        if(json.data.data.length > 0){
+                            $('.mui-scroll-wrapper').css('height','175px');
+                        }else{
+                            $('.mui-scroll-wrapper').css('height','0px');
+                        }
+                        $('.compan').html(json.data.data);
+                    }
+                }
+            })
+        }
+    }
+
+</script>

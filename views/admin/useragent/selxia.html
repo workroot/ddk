@@ -1,0 +1,62 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+			<li class=""><a href="{:url('backend/useragent/index')}">代理商管理</a></li>
+            <li class=""><a href="{:url('backend/useragent/add')}">添加代理商</a></li>
+            <li class="layui-this">下级用户查看</li>
+            <li class=""></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+              
+                
+                <hr>
+
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th>姓名</th>
+                        <th>手机</th>
+                        <th>身份证</th>
+                        <th>城市</th>
+                        <th>代理商</th>
+                        <th>状态</th>
+                        <th>创建时间</th>
+                       
+                    </tr>
+                    </thead>
+                    <tbody>
+					
+					 
+                     {foreach name="user_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.names}</td>
+                        <td>{$vo.mobile}</td>
+                        <td>{$vo.idcard}</td>
+                        <td>{$vo.city}</td>
+                      	<td>{$vo.pnames}</td>
+                        <td>{php}echo $vo['status']==1 ? '启用' : '禁用';{/php}</td>
+                        <td>{$vo.create_time}</td>
+						
+                       
+                    </tr>
+					
+                    {/foreach}
+					
+                    </tbody>
+                </table>
+				<div style="float:right; font-size:20px;"> 用户人数：{$count} | 代理数：{$countdailishang} | 普通用户：{$countputong}</div>
+			 {$user_list->render()}
+                <!--分页-->
+                
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

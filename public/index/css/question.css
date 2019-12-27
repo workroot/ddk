@@ -1,0 +1,89 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #fff;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.content{
+    background: url("../img/lawyer/question_bg.png") no-repeat;
+    background-size: 100%;
+    padding-top: 1.2rem;
+}
+.question_img1{
+    width: 3.72rem;
+    display: block;
+    margin: 0 auto 0.24rem;
+}
+.question_img2{
+    width: 3.68rem;
+    display: block;
+    margin: 0 auto;
+}
+.question_ti{
+    margin-top: 2rem;
+    font-size: 0.24rem;
+	line-height: 0.24rem;
+    color: #8e8f91;
+    text-align: center;
+}
+.question_ti span{
+    display: inline-block;
+    width: 0.64rem;
+    height: 0.02rem;
+    background: #bdbdbd;
+    position: relative;
+    top: -0.08rem;
+}
+.question_box{
+    width: 100%;
+    position: relative;
+    margin-top: 0.2rem;
+    padding-bottom: 0.5rem;
+}
+.question_box span{
+    display: inline-block;
+    width: 0.54rem;
+	height: 0.54rem;
+    background-image: linear-gradient(0deg, #537bfe 0%, #6e9bff 100%);
+    border-radius: 50%;
+    font-size: 0.36rem;
+    color: #ffffff;
+    line-height: 0.54rem;
+    text-align: center;
+    box-shadow: 0rem 0.04rem 0.1rem 0rem #4171f9;
+    position: absolute;
+    top: 0;
+    left: 0.32rem;
+}
+.question_des{
+    width: 5.4rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.3rem;
+	line-height: 0.42rem;
+    color: #ffffff;
+    margin: 0 auto 0.26rem;
+    background-image: linear-gradient(90deg, #537bfe 0%, #6e9bff 100%);
+    position: relative;
+}
+.question_des:before{
+    content: '';
+    width: 0;
+    height: 0;
+    border-width: 0.04rem 0.08rem;
+    border-style: solid;
+    border-color: #537BFE #537BFE transparent transparent;
+    position: absolute;
+    left: -0.12rem;
+    top: 0;
+}
+.anwser_des{
+    width: 5.4rem;
+    padding: 0.2rem 0.3rem;
+    font-size: 0.26rem;
+	line-height: 0.4rem;
+    color: #46464e;
+    background: #f5f5f5;
+    margin: 0 auto;
+}

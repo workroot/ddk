@@ -1,0 +1,27 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #f4f4f4;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.erweima_box{
+    padding: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.erweima_box img{
+    width: 3.1rem;
+}
+.erweima_box p{
+    font-size: 0.32rem;
+    color: #000;
+    text-align: center;
+}
+.contact_tips{
+    font-size: 0.28rem;
+    color: #666666;
+    margin-top: 0.44rem;
+    text-align: center;
+}

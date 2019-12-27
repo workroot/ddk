@@ -1,0 +1,156 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #fff;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+header{
+    width: 100%;
+    height: 3.8rem;
+    background: url("../img/lawyer/img_lawbg.png") no-repeat;
+    background-size: 100%;
+    position: relative;
+}
+.service_box{
+    width: 6.74rem;
+	background-color: #ffffff;
+	box-shadow: 0rem 0.06rem 0.1rem 0rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.1rem;
+    position: absolute;
+    top: 0.62rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.78rem 0.4rem 0.4rem 0.4rem ;
+}
+.sertop_left{
+    width: 1.72rem;
+    height: 1.72rem;
+    float: left;
+}
+.sertop_left img{
+    width: 1.72rem;
+    height: 1.72rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.sertop_right{
+    height: 1.72rem;
+    float: left;
+    margin-left: 0.2rem;
+}
+.sertop_right p{
+    font-size: 0.26rem;
+	line-height: 0.56rem;
+	color: #000000;
+}
+.sertop_right p span{
+    display: block;
+    width: 2rem;
+    float: left;
+}
+.sertop_right p span i{
+    color: #0057c8;
+    font-style: normal;
+}
+.service_topti{
+    font-size: 0.28rem;
+	letter-spacing: 0rem;
+	color: #000000;
+    opacity: 0.67;
+    margin-top: 0.56rem;
+    text-align: center;
+}
+.service_topti span{
+    color: #ff0000;
+}
+.content_box{
+    margin-top: 1.1rem;
+    text-align: center;
+}
+.service_feiyong{
+    font-size: 0.28rem;
+	font-weight: bold;
+	line-height: 0.34rem;
+    color: #000000;
+}
+.service_num{
+    font-size: 0.46rem;
+	font-weight: 500;
+    color: #ff0000;
+    margin-top: 0.14rem;
+}
+.service_tips{
+    font-size: 0.24rem;
+	font-weight: 500;
+	color: #7c7c7c;
+    margin-top: 0.6rem;
+}
+.service_tips span{
+    color: #ff0000;
+}
+.lawyer_box{
+    width: 4.2rem;
+    margin: 0.46rem auto 0.1rem;
+}
+.lawyer_box img{
+    width: 0.62rem;
+    height: 0.62rem;
+    border-radius: 50%;
+    object-fit: cover;
+    float: left;
+    margin-right: 0.26rem;
+}
+.lawyer_box img:last-of-type{
+    margin-right: 0;
+}
+.promise{
+    margin-top: 0.32rem;
+}
+.promise_item{
+    margin-top: 0.14rem;
+    padding: 0 0.3rem;
+    display: flex;
+    justify-content: space-around;
+}
+.promise_item span{
+    font-size: 0.28rem;
+	font-weight: 500;
+	line-height: 0.34rem;
+	color: #000000;
+}
+.promise_item span img{
+    width: 0.28rem;
+    position: relative;
+    top: 0.08rem;
+    margin-right: 0.1rem;
+}
+.promise_item span:nth-child(2) img{
+    width: 0.36rem;
+}
+.service_tips1{
+    font-size: 0.22rem;
+    color: #f00; 
+    font-weight: bold; 
+    margin-top: 0.3rem;  
+}
+.submit_btn,.cancel_btn{
+    width: 4.2rem;
+	height: 0.74rem;
+	background-image: linear-gradient(90deg, #6f9fff 0%, #a1a7ff 100%);
+    border-radius: 0.37rem;
+    display: block;
+    margin: 0.4rem auto 0.2rem;
+    font-size: 0.38rem;
+    color: #ffffff;
+    border: none;
+}
+/* .cancel_btn{
+    width: 4.2rem;
+	height: 0.74rem;
+	border-radius: 0.37rem;
+    border: solid 0.01rem #5f56e8;
+    font-size: 0.44rem;
+	color: #5f56e8;
+} */

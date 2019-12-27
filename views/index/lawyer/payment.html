@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懂贷咖</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__ICSS__/iconfont.css">
+    <link rel="stylesheet" href="__ICSS__/style.css">
+    <link rel="stylesheet" href="__ICSS__/payment.css">
+    <script src="__IJS__/mui.min.js"></script>
+    <script src="__IJS__/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="service_box">
+            <p>您目前享有基础服务：</p>
+            <p>
+                <img src="__IIMG__/lawyer/icon_service_g.png" alt="">案件定性：<span>判断是否属于法律问题</span>
+            </p>
+            <p>您目前享有基础服务：<span class="cir_wen">?</span></p>
+            <p>
+                <img src="__IIMG__/lawyer/icon_service_r.png" alt="">案情剖析以及相关法律条文举证
+            </p>
+            <p>
+                <img src="__IIMG__/lawyer/icon_service_r.png" alt="">法律关系及利害分析
+            </p>
+            <p>
+                <img src="__IIMG__/lawyer/icon_service_r.png" alt="">给出专业建议
+            </p>
+        </div>
+    </header>
+    <div class="content_box">
+        <p class="service_feiyong">服务费用</p>
+        <p class="service_num">{$price}元</p>
+        <p class="service_tips">从正式咨询开始限时60分钟</p>
+        <div class="lawyer_box clearfix">
+            <img src="__IIMG__/lawyer/img_wang.png" alt="">
+            <img src="__IIMG__/lawyer/img_wang.png" alt="">
+            <img src="__IIMG__/lawyer/img_wang.png" alt="">
+            <img src="__IIMG__/lawyer/img_wang.png" alt="">
+        </div>
+        <p class="service_tips">由系统指派律师提供服务，这些律师已准备好接受指派。</p>
+        <p class="service_feiyong promise">服务承诺</p>
+        <p class="promise_item">
+                <span>
+                    <img src="__IIMG__/lawyer/icon_save.png" alt="">问题解决率99%
+                </span>
+            <span>
+                    <img src="__IIMG__/lawyer/icon_tuikuan.png" alt="">不满意自动退款
+                </span>
+        </p>
+        <p class="service_tips1"><span><?php $count= 854+(isset($pcount) && !empty($pcount)? $pcount :0); echo $count; ?></span>人正在使用付费服务，<span><?php echo ceil($pcount/8); ?></span>人与您问题相似。</p>
+        <button class="submit_btn"><a href="{:url('/index/wxpay/pay',['pid'=>$pid,'lid'=>$lid])}">咨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;询</a></button>
+        <button class="cancel_btn"><a href="javascript:history.go(-1);">稍后再说</a></button>
+    </div>
+</div>
+</body>
+</html>

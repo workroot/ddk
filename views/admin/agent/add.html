@@ -1,0 +1,106 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('backend/agent/index')}">代理商类型管理</a></li>
+            <li class="layui-this">添加代理商类型</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('backend/agent/save')}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">类型名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="agent_name" value="" required lay-verify="required" placeholder="请输入代理商类型名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">可否oem名称</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_name" value="1" title="可以">
+                            <input type="radio" name="isoem_name" value="0" title="不可以"  checked="checked">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">oem名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="rename" value=""  placeholder="自定义OEM名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否开启自定义</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_ewm" value="1" title="开启" checked="checked">
+                            <input type="radio" name="isoem_ewm" value="0" title="不开启">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">可否开启二维码</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isopen_ewmo" value="1" title="开启"  checked="checked">
+                            <input type="radio" name="isopen_ewmo" value="0" title="不开启">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">二维码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="thumb" value="" class="layui-input layui-input-inline" id="thumb" placeholder="二维码">
+                            <button type="button" class="layui-btn" id="file_upload" data-type="5" style="height: 38px;"><i class="layui-icon">&#xe67c;</i>上传图片</button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">可否oem价格</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_price" value="1" title="可以">
+                            <input type="radio" name="isoem_price" value="0" title="不可以"  checked="checked">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">可否oem标题</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_title" value="1" title="可以">
+                            <input type="radio" name="isoem_title" value="0" title="不可以"  checked="checked">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">可否oem说明</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="isoem_marks" value="1" title="可以">
+                            <input type="radio" name="isoem_marks" value="0" title="不可以"  checked="checked">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否开启微信分享</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="is_share" value="1" title="开启">
+                            <input type="radio" name="is_share" value="0" title="不开启"  checked="checked">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">通话数量</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="nums" value="0" lay-verify="number" placeholder="排序" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="descc" value="0" lay-verify="number" placeholder="排序" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

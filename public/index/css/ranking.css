@@ -1,0 +1,85 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #fff;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.ranking_tab{
+    width: 100%;
+    padding: 0 0.4rem;
+    font-size: 0.3rem;
+	line-height: 0.86rem;
+    color: #333333;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.2rem;
+}
+.ranking_tab span{
+    line-height: 0.86rem;
+    color: #333333;
+}
+.ranking_tab span.active{
+    color: #7785eb;
+    border-bottom: 0.02rem solid #7785eb;
+}
+.ranking_list{
+    padding: 0.1rem 0.2rem;
+    display: none;
+}
+.ranking_list.active{
+    display: block;
+}
+.ranking_list ul li{
+    height: 0.9rem;
+    line-height: 0.9rem;
+    border-bottom: 0.02rem solid #F4F4F4;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0.6rem;
+}
+.ranking_list ul li:last-of-type{
+    border-bottom: none;
+}
+.list_left{
+    padding-left: 1.16rem;
+    position: relative;
+}
+.first_img{
+    width: 0.3rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.head_img{
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    transform: translateY(-50%);
+}
+.list_left .username{
+    font-size: 0.28rem;
+	line-height: 0.9rem;
+	color: #333333;
+}
+.list_left .ranking_num{
+    font-size: 0.3rem;
+	line-height: 0.9rem;
+    color: #333333;
+    position: absolute;
+    left: 0;
+}
+.list_right{
+    font-size: 0.28rem;
+	line-height: 0.9rem;
+	color: #333333;
+}
+.list_right span{
+    color: #7785eb;
+}

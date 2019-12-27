@@ -1,0 +1,8 @@
+.idea
+composer.lock
+*.log
+thinkphp/
+<<<<<<< HEAD
+=======
+
+>>>>>>> 639579aa2728026f83b23bb5ad0b3dee9a780465

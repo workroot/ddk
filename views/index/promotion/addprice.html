@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懂贷咖</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/mui.picker.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__ICSS__/set_price.css">
+    <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css" media="all">
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/index/js/clipboard.min.js"></script>
+    <script src="__PUBLIC__/js/mui.picker.min.js"></script>
+    <script src="__PUBLIC__/layui/layui.all.js"></script>
+</head>
+<body>
+<div class="container">
+    <p class="price_ti">借款平台查询<a href="javascript:;" class="add_price">添加链接价格</a></p>
+    {volist name="data" id="vo"}
+    <div class="price_list" data-link="1">
+        <p class="list_pti">推广链接名：{$vo.link_name}</p>
+        <span class="iconfont iconshuxie edit" data-id="{$vo.id}" data-name="{$vo.link_name}" data-price="{$vo.price}"></span>
+        <div class="price_bot clearfix">
+            <div class="price_item">
+                <p>￥{if condition="isset($prices.price) && $prices.price neq 0 "}{$prices.price}{else/}{$prices.price}{/if}</p>
+                <p>成本价格</p>
+            </div>
+            <div class="price_item">
+                <p>￥{$vo.ticheng}</p>
+                <p>佣金</p>
+            </div>
+            <div class="price_item price_set">
+                <p>￥<span>{$vo.price}</span></p>
+                <p>推广价格</p>
+            </div>
+        </div>
+        <div class="btn_box clearfix">
+            <button class="spread_btn" data-url="{$vo.url}" data-pid="{$vo.id}">立即推广</button>
+            <button class="delete_btn del" data-id="{$vo.id}">删除</button>
+        </div>
+    </div>
+    {/volist}
+    <!-- <a class="revise" href="{:url('/index/Agent/lawyerPrice')}">修改律师咨询服务价格
+        <span class="mui-icon mui-icon-arrowright"></span>
+    </a> -->
+    <!-- 修改价格弹窗 -->
+    <div class="cover_box">
+        <div class="cover_wrap">
+            <input type="hidden" name="id" value="" disabled>
+            <input type="hidden" name="type" value="{$prices.pid}" disabled>
+            <input class="search_price" type="text" name="link_name_c" placeholder="链接名称" oninput="focus()">
+            <input class="search_price" type="text" name="price_c" placeholder="请设置平台查询推广价格" oninput="focus()">
+            <div class="btn_box1 clearfix">
+                <button class="cancel_btn">取消</button>
+                <button class="sure_btn" id="submit_edit">确定</button>
+            </div>
+        </div>
+    </div>
+    <!-- 新增价格弹窗 -->
+    <div class="cover_box2">
+        <div class="cover_wrap">
+            <input type="text" value="平台查询成本价：{if condition="isset($prices.price) && $prices.price neq 0 "}{$prices.price}{else/}{$prices.price}{/if}" disabled>
+            <input type="hidden" name="type" value="{$prices.pid}" disabled>
+            <input type="hidden" name="pname" value="{$prices.pname}" disabled>
+            <input type="text" value="佣金=推广价-成本价" disabled>
+            <input class="search_price" type="text" name="link_name" placeholder="链接名称" oninput="focus()">
+            <input class="search_price" type="text" name="price" placeholder="请设置平台查询推广价格" oninput="focus()">
+            <div class="btn_box1 clearfix">
+                <button class="cancel_btn">取消</button>
+                <button class="sure_btn" id="submit_save">确定</button>
+            </div>
+        </div>
+    </div>
+    <!-- 推广 -->
+    <div class="cover_box1">
+        <div class="tuiguang">
+            <input name="url" style="text-align: center;font-size: 0.1px;z-index: -999;position: absolute;left: 39%;top: 21px;width: 1.2rem;height: 0.4rem;" value="" id="foo2"  style="width:300px;"  type="text">
+            <span class="mui-popup-button copys" style="width: 1.46rem;height: 0.4rem;line-height: 22px;background-color: #7785eb;border-radius: 0.1rem;border: none;display: block;margin: 0.3rem auto;font-size: 0.24rem;color: #ffffff;" data-clipboard-action="copy" data-clipboard-target="#foo2" id="webcopy">生成链接</span>
+            <button class="code_img" data-pid="">查看二维码</button>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+
+    $(document).ready(function(){
+       $('#submit_save').on('click',function(){
+            var price = $('input[name="price"]').val();
+            var type = $('input:hidden[name="type"]').val();
+            var pname = $('input:hidden[name="pname"]').val();
+            var link_name = $('input[name="link_name"]').val();
+           if(link_name == ''){
+               layer.msg('链接名不能为空');
+               return;
+           }
+           if(!/^[\u4e00-\u9fa5]|\d+$/.test(link_name)){
+               layer.msg('链接名只能为中文');
+               return;
+           }
+           if(!/^(?:[1-9][0-9]*(?:\.[0-9]{1,2})?|0(?:\.[0-9]{1,2})?)$/.test(price)){
+               layer.msg('请输入正确的金额');
+               return;
+           }
+           var ling = layer.load();
+           $.ajax({
+               url:"{:url('index/promotion/add')}",
+               type:'post',
+               dataType:'json',
+               data:{'price':price,'type':type,'pname':pname,'link_name':link_name},
+               success:function(json){
+                   layer.close(ling);
+                   if(json.code == 0){
+                       layer.msg('添加成功',{time:500},function(){
+                           window.location.href = "{:url('index/promotion/addPrice')}";
+                       });
+                       $(".cover_box2").hide();
+                   }else{
+                       layer.msg(json.message);
+                   }
+               }
+           })
+       });
+
+
+        $('#submit_edit').on('click',function(){
+            var price = $('input[name="price_c"]').val();
+            var type = $('input:hidden[name="type"]').val();
+            var id = $('input:hidden[name="id"]').val();
+            var link_name = $('input[name="link_name_c"]').val();
+            if(link_name == ''){
+                layer.msg('链接名不能为空');
+                return;
+            }
+            if(!/^[\u4e00-\u9fa5]|\d+$/.test(link_name)){
+                layer.msg('链接名只能为中文');
+                return;
+            }
+            if(!/^(?:[1-9][0-9]*(?:\.[0-9]{1,2})?|0(?:\.[0-9]{1,2})?)$/.test(price)){
+                layer.msg('请输入正确的金额');
+                return;
+            }
+            var ling = layer.load();
+            $.ajax({
+                url:"{:url('index/promotion/edit')}",
+                type:'post',
+                dataType:'json',
+                data:{'price':price,'id':id,'link_name':link_name,'type':type},
+                success:function(json){
+                    layer.close(ling);
+                    if(json.code == 0){
+                        layer.msg('添加成功',{time:500},function(){
+                            window.location.href = "{:url('index/promotion/addPrice')}";
+                        });
+                        $(".cover_box").hide();
+                    }else{
+                        layer.msg(json.message);
+                    }
+                }
+            })
+        });
+        $('.del').on('click',function(){
+            var id = $(this).attr('data-id');
+            layer.confirm('是否确定删除该条链接？',function(){
+                $.ajax({
+                    url:"{:url('index/promotion/del')}",
+                    type:'post',
+                    dataType:'json',
+                    data:{"id":id},
+                    success:function(json){
+                        if(json.code == 0){
+                            layer.msg(json.message,{time:500},function(){
+                                window.location.href = "{:url('index/promotion/addPrice')}";
+                            })
+                        }else{
+                            layer.msg(json.message);
+                        }
+                    }
+                })
+            });
+        });
+        $("#webcopy").on('click',function(){
+            var clipboard = new Clipboard('.copys');
+            layer.msg('链接复制成功',{time:500},function(){
+                $(".cover_box1").hide();
+            });
+
+        });
+
+        $('.code_img').on('click',function(){
+            var pid = $(this).attr('data-pid');
+            window.location.href = '/index/promotion/code_img?pid='+pid;
+        })
+    });
+
+
+
+    $(function(){
+        $(".edit").click(function(){
+            var id = $(this).attr('data-id');
+            var price = $(this).attr('data-price');
+            var link_name = $(this).attr('data-name');
+            $("input:hidden[name='id']").val(id);
+            $("input:hidden[name='price_c']").val(price);
+            $("input:hidden[name='link_name_c']").val(link_name);
+            $(".cover_box").show()
+            var link = $(this).parents(".price_list").data("link");
+            $(".cover_box").attr("data-links",link)
+        })
+        $(".add_price").click(function(){
+            $(".cover_box2").show()
+        })
+        function focus(){
+            console.log($(".cover_box input").val());
+            if($(".cover_box input").val() != ''){
+                $(".cover_box sure_btn").removeAttr("disabled").css("background","rgba(119, 133, 235, 1)")
+            }
+        }
+        $(".cover_box .cancel_btn").click(function(){
+            $(".cover_box").hide()
+        })
+        $(".cover_box2 .cancel_btn").click(function(){
+            $(".cover_box2").hide()
+        })
+        $(".cover_box .sure_btn").click(function(){
+            if($(".cover_box input").val() != ''){
+                $(".cover_box sure_btn").removeAttr("disabled").css("background","rgba(119, 133, 235, 1)")
+                var price = $(".cover_box input").val();
+                var links = $(this).parents(".cover_box").data("links");
+                $(".price_list").each(function(){
+                    if($(this).attr("data-link") == $(".cover_box").attr("data-links")){
+                        $(this).find(".price_set").find("span").html(price);
+                    }
+                  //  $(".cover_box").hide()
+                  //  $(".cover_box input").val('')
+                })
+            }
+        })
+        $(".spread_btn").click(function(){
+            var url = $(this).attr('data-url');
+            var pid = $(this).attr('data-pid');
+            $('input:hidden[name="url"]').val(url);
+            $('.code_img').attr('data-pid',pid);
+            $(".cover_box1").show()
+        })
+        $(".tuiguang button").click(function(){
+            $(".cover_box1").hide()
+        })
+    })
+</script>
+</html>

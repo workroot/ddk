@@ -1,0 +1,122 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #F4F4F4;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.propaganda_tab{
+    line-height: 0.8rem;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 1rem;
+    margin-bottom: 0.1rem;
+}
+.propaganda_tab span{
+    font-size: 0.28rem;
+    color: #666;
+    line-height: 0.8rem;
+}
+.propaganda_tab span.active{
+    border-bottom: 0.02rem solid #7785eb;
+    color: #7785eb;
+}
+.content{
+    padding-bottom: 1rem;
+}
+.propaganda_list{
+    padding: 0.2rem 0.2rem 0.34rem 0.2rem;
+    margin-bottom: 0.2rem;
+    background: #fff;
+    position: relative;
+}
+.propaganda_ti{
+    font-size: 0.32rem;
+	color: #333333;
+}
+.propaganda_ti span{
+    display: inline-block;
+    width: 1rem;
+	height: 0.3rem;
+	background-color: #ff4444;
+    border-radius: 0.1rem;
+    font-size: 0.24rem;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.3rem;
+}
+.propaganda_txt{
+    font-size: 0.24rem;
+	line-height: 0.34rem;
+	letter-spacing: 0rem;
+    color: #333333;
+    margin-top: 0.1rem;
+}
+.pic_box{
+    margin-top: 0.12rem;
+}
+.pic_box img{
+    width: 2rem;
+    height: 2.1rem;
+    float: left;
+    margin-right: 0.55rem;
+}
+.pic_box img:last-of-type{
+    margin-right: 0;
+}
+.propaganda_time{
+    font-size: 0.24rem;
+    color: #666666;
+    margin-top: 0.14rem;
+}
+.copy_btn{
+    width: 1.6rem;
+	height: 0.4rem;
+	background-color: #7785eb;
+    border-radius: 0.1rem;
+    border: none;
+    font-size: 0.24rem;
+    color: #ffffff;
+    position: absolute;
+    right: 0.2rem;
+    bottom: 0.2rem;
+}
+.tabbar{
+    height: 1rem;
+    width: 100%;
+    max-width: 750px;
+    min-width: 320px;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tab_item{
+    width: 25%;
+    float: left;
+    text-align: center;
+    padding-top: 0.1rem;
+}
+.tab_item p .iconfont{
+    font-size: 0.46rem;
+    color: #666666;
+}
+.tab_item p{
+    font-size: 0.24rem;
+	color: #666;
+}
+.tab_item.active p{
+    color: #7785eb;
+}
+.tab_item.active p .iconfont{
+    color: #7785eb;
+}
+.mui-dtpicker{
+    bottom: -8px;
+}
+.mui-dtpicker{
+    box-shadow: none;
+}

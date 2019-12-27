@@ -1,0 +1,105 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html {
+    font-size: 100px;
+}
+
+/*效果图750px*/
+
+@media (max-width: 640px) {
+    html {
+        font-size: 85.33px;
+    }
+}
+
+/*Android常用宽度*/
+
+@media (max-width: 540px) {
+    html {
+        font-size: 72px;
+    }
+}
+
+/*Android常用宽度*/
+
+@media (max-width: 480px) {
+    html {
+        font-size: 64px;
+    }
+}
+
+/*Android常用宽度*/
+
+@media (max-width: 445px) {
+    html {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 414px) {
+    html {
+        font-size: 55.2px;
+    }
+}
+
+/*i6Plus,i7Plus宽度*/
+
+@media (max-width: 375px) {
+    html {
+        font-size: 50px;
+    }
+}
+
+/*i6,i7宽度*/
+
+@media (max-width: 360px) {
+    html {
+        font-size: 48px;
+    }
+}
+
+/*Android常用宽度*/
+
+@media (max-width: 320px) {
+    html {
+        font-size: 42.67px;
+    }
+}
+
+/*i5宽度*/
+
+*,
+body,
+div,
+p,
+span,
+ul,
+ol,
+li,
+input,
+button,
+textarea {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    color: #333;
+    text-decoration: none;
+}

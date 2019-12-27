@@ -1,0 +1,52 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #f4f4f4;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.promotion_box{
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 0.22rem;
+    margin-top: 0.2rem;
+    padding: 0.24rem 0 0.3rem 0;
+    text-align: center;
+}
+.promo_ti{
+    font-size: 0.28rem;
+    color: #000000;
+    margin-bottom: 0.1rem;
+}
+.promo_link{
+    font-size: 0.36rem;
+    color: #333333;
+    margin-bottom: 0.24rem;
+}
+.promotion_box button{
+    width: 2.38rem;
+	height: 0.54rem;
+	background-color: #7785eb;
+    border-radius: 0.1rem;
+    font-size: 0.26rem;
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+    border: none;
+}
+.promotion_box img{
+    width: 1.4rem;
+    display: block;
+    margin: 0.1rem auto;
+}
+.promo_txt{
+    font-size: 0.3rem;
+	color: #333333;
+}
+.promotion_tips{
+    font-size: 0.28rem;
+    color: #666666;
+    margin-top: 0.9rem;
+    padding: 0 0.2rem;
+}

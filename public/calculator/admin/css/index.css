@@ -1,0 +1,85 @@
+body{background: #e8e8e8;}
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.index_top{
+    margin: 0 -10px;
+}
+.index_top .layui-col-md3{
+    padding: 0 10px;
+}
+.statistics{
+    background-color: #ffffff;
+    padding: 15px 10px;
+}
+.statistics:last-of-type{
+    margin-right: 0;
+}
+.statistics_ti{
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+.statistics_bot .layui-col-md6{
+    padding: 0 10px;
+}
+.statistics_item{
+    height: 70px;
+    background: #f2f2f2;
+    border-radius: 6px;
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 10px;
+}
+.statistics_item:nth-child(2n){
+    margin-right: 0;
+}
+.statistics_item p:first-of-type{
+    font-size: 14px;
+    color: #666;
+}
+.statistics_item p:nth-child(2){
+    font-size: 16px;
+    color: #4440e7;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.order_box{
+    margin-top: 20px;
+}
+.order_left{
+    padding-right: 20px;
+
+}
+#completed{
+    width: 100%;
+    height: 320px;
+    background: #fff;
+    padding: 20px;
+}
+#unfulfilled{
+    width: 100%;
+    height: 300px;
+    background: #fff;
+    padding: 20px;
+}
+.order_right{
+    width: 515px;
+    float: left;
+}
+.order_ri1{
+    height: 300px;
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.order_ri2{
+    margin-bottom: 0;
+}
+#orderPay,#orderFinish{
+    width: 100%;
+    height: 280px;
+}

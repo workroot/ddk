@@ -1,0 +1,108 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #f4f4f4;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.bank_list{
+    width: 7.1rem;
+	height: 2rem;
+    border-radius: 0.1rem;
+    margin: 0 auto 0.2rem;
+    position: relative;
+}
+.bank_gs{
+    background: url("../img/dailishang/bank_bg_gs.png");
+    background-size: 100%;
+}
+.card_num{
+    font-size: 0.32rem;
+    color: #ffffff;
+    position: absolute;
+    top: 1.34rem;
+    left: 0.2rem;
+}
+.relieve{
+    font-size: 0.3rem;
+    color: #ffffff;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.44rem;
+}
+.add_bank{
+    display: block;
+    width: 3.44rem;
+	height: 0.8rem;
+	background-color: #7785eb;
+    border-radius: 0.1rem;
+    margin: 1.74rem auto 0.2rem;
+    font-size: 0.32rem;
+    color: #ffffff;
+    line-height: 0.8rem;
+    text-align: center;
+}
+.cover{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.28);
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: none;
+}
+.cover_wrap{
+    width: 5.44rem;
+	/* height: 4.4rem; */
+	background-color: #ffffff;
+    border-radius: 0.1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 0.3rem 0.7rem;
+}
+.relieve_ti{
+    font-size: 0.3rem;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 0.14rem;
+}
+.cover_wrap input{
+    width: 100%;
+	height: 0.64rem;
+	background-color: #f4f4f4;
+    border-radius: 0.1rem;
+    padding: 0;
+    margin: 0;
+    line-height: 0.64rem;
+    text-align: center;
+    border: none;
+    border-bottom: 0.02rem solid #f4f4f4;
+    float: left;
+    margin-bottom: 0.2rem;
+}
+.clear{clear: both;}
+.relieve_btn button{
+    width: 1.42rem;
+	height: 0.64rem;
+    border-radius: 0.1rem;
+    font-size: 0.3rem;
+    color: #ffffff;
+    border: none;
+}
+.relieve_btn button.cancel{
+    background: #ff7563;
+    float: left;
+}
+.relieve_btn button.sure{
+    background: #7785eb;
+    float: right;
+}
+.relieve_tips{
+    font-size: 0.26rem;
+    color: #666666;
+    margin-top: 0.16rem;
+}

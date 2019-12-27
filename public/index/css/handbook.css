@@ -1,0 +1,26 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #fff;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.content{
+    width: 100%;
+}
+.content img{
+    width: 100%;
+    float: left;
+}
+.erweima{
+    width: 1.8rem;
+    display: block;
+    margin: 0.6rem auto 0.2rem;
+}
+.customer{
+    font-size: 0.36rem;
+    color: #333333;
+    text-align: center;
+    padding-bottom: 0.4rem;
+}

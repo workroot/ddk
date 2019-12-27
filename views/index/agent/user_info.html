@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懂贷咖</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/mui.picker.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__ICSS__/user_info.css">
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/mui.picker.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <p class="info_list">
+                头像
+                <a href="javascript:;">
+                    <img src="__IIMG__/userhead_nan.png" alt="">
+                </a>
+            </p>
+            <p class="info_list">
+                用户名
+                <a class="change_name" href="javascript:;">
+                    <span class="info_right">小欧小</span>
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+            <p class="info_list">
+                性别
+                <a class="change_sex" href="javascript:;">
+                    <span class="info_right">男</span>
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+        </div>
+        <div class="content">
+            <p class="info_list">
+                地区
+                <a class="change_area" href="javascript:;">
+                    <span class="info_right">湖北省武汉市</span>
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+            <p class="info_list">
+                注册时间
+                <a href="javascript:;">2019.08.31</a>
+            </p>
+        </div>
+        <!-- 修改昵称 -->
+        <div class="cover_box">
+            <div class="cover_warp">
+                <textarea name="" id="" cols="30" rows="10">小欧小</textarea>
+                <p>支持中文、英文
+                    <button>确定</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+        $(".change_name").click(function(){
+            $(".cover_box").show()
+        })
+        $(".cover_warp button").click(function(){
+            var name = $(this).parent().siblings("textarea").val()
+            $(".change_name .info_right").text(name);
+            $(".cover_box").hide()
+        })
+        $(".change_sex").click(function(){
+            var picker = new mui.PopPicker();
+            picker.setData([{value:'0',text:'男'},{value:'1',text:'女'}]);
+            picker.show(function (selectItems) {
+                $(".change_sex .info_right").text(selectItems[0].text)
+            })
+        })
+        $(".change_area").click(function(){
+            var picker = new mui.PopPicker({
+                layer: 2
+            });
+            picker.setData([{
+                value: '110000',
+                text: '北京市',
+                children: [{
+                        value: "110101",
+                        text: "东城区"
+                }]
+            }, {
+                value: '120000',
+                text: '天津市',
+                children: [{
+                    value: "120101",
+                    text: "和平区"
+                }, {
+                    value: "120102",
+                    text: "河东区"
+                }, {
+                    value: "120104",
+                    text: "南开区"
+                }]
+            }])
+            picker.show(function(SelectedItem) {
+                $(".change_area .info_right").text(SelectedItem[0].text + SelectedItem[1].text)
+            })
+        })
+    })
+</script>
+</html>

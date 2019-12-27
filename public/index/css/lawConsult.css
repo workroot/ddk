@@ -1,0 +1,385 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #f2f3f9;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+header{
+    width: 100%;
+    height: 2.4rem;
+    background: url("../img/lawyer/img_lawbg.png") no-repeat;
+    background-size: 100%;
+}
+.text_area{
+    width: 6.37rem;
+	height: 3.76rem;
+	background-color: #ffffff;
+	box-shadow: 0rem 0.06rem 0.1rem 0rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.1rem;
+    position: absolute;
+    top: 0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.text_area textarea{
+    width: 5.52rem;
+	height: 2.43rem;
+    background-color: #f6f6f6;
+    padding: 0.1rem;
+    font-size: 0.2rem;
+	line-height: 0.32rem;
+	color: #000000;
+    opacity: 0.6;
+    display: block;
+    margin: 0.36rem auto 0.2rem;
+    border: none;
+}
+.text_area button{
+    width: 2.56rem;
+	height: 0.55rem;
+	background: linear-gradient(to right, #6f9fff,#a1a7ff);
+    border-radius: 0.1rem;
+    font-size: 0.26rem;
+    color: #ffffff;
+    border: none;
+    display: block;
+    margin: 0 auto;
+}
+.tab_ban{
+    height: 4.04rem;
+    background: #fff;
+    padding-top: 2.38rem;
+}
+.ban_item{
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+.ban_item img{
+    width: 0.66rem;
+    display: block;
+    margin: 0 auto 0.2rem;
+}
+.ban_item p{
+    font-size: 0.28rem;
+	color: #747474;
+}
+.hot_question{
+    margin-top: 0.12rem;
+    background: #fff;
+}
+.question_ti{
+    font-size: 0.28rem;
+	font-weight: bold;
+    color: #303030;
+    padding-left: 0.25rem;
+    position: relative;
+    line-height: 0.72rem;
+    border-bottom: 0.02rem solid #dddddd;
+}
+.question_ti:before{
+    content: '';
+    width: 0.04rem;
+	height: 0.3rem;
+    background-color: #2b7fe8;
+    position: absolute;
+    top: 0.2rem;
+    left: 0.15rem;
+}
+.question_list{
+    height: 1.72rem;
+    border-bottom: 0.02rem solid #dddddd;
+    padding: 0.2rem 0.3rem 0 0.3rem;
+    position: relative;
+}
+.question_title{
+    font-size: 0.28rem;
+	font-weight: bold;
+	color: #333333;
+}
+.question_title span{
+    display: inline-block;
+    height: 0.34rem;
+    background: #ff4d24;
+    line-height: 0.34rem;
+    padding: 0 0.14rem;
+    font-size: 0.22rem;
+	font-weight: normal;
+    color: #ffffff;
+    margin-right: 0.1rem;
+}
+.answer_num{
+    font-size: 0.22rem;
+	font-weight: bold;
+    color: #333333;
+    margin-top: 0.2rem;
+}
+.consult_num{
+    font-size: 0.2rem;
+    color: #999999;
+    margin-top: 0.1rem;
+}
+.consult_num span{
+    color: #0e7fff;
+}
+.question_list button{
+    width: 1.84rem;
+	height: 0.6rem;
+	background: linear-gradient(to right, #6f9fff, #a1a7ff);
+    border-radius: 0.1rem;
+    font-size: 0.24rem;
+    color: #fefefe;
+    border: none;
+    position: absolute;
+    right: 0.3rem;
+    bottom: 0.3rem;
+}
+.service_box{
+    background: #fff;
+    margin-top: 0.12rem;
+    padding-top: 0.14rem;
+}
+.service_ti{
+    font-size: 0.28rem;
+	font-weight: bold;
+    color: #303030;
+    position: relative;
+    padding-left: 0.25rem;
+}
+.service_ti:before{
+    content: '';
+    width: 0.04rem;
+	height: 0.3rem;
+    background-color: #2b7fe8;
+    position: absolute;
+    top: 0.05rem;
+    left: 0.15rem;
+}
+.service_item{
+    margin-top: 0.14rem;
+    padding-bottom: 0.2rem;
+}
+.service_list{
+    width: 3.1rem;
+    height: 2.7rem;
+    background: #f2f3f9;
+    float: left;
+    margin-left: 0.62rem;
+    margin-bottom: 0.12rem;
+    padding-top: 0.22rem;
+    text-align: center;
+}
+.service_list:nth-child(2n){
+    margin-left: 0.12rem;
+}
+.service_logo{
+    width: 1.04rem;
+	height: 1.04rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+.service_logo.green_bg{
+    background: #72bb38;
+}
+.service_logo.orange_bg{
+    background: #ff7f00;
+}
+.service_logo.blue_bg{
+    background: #3fbff0;
+}
+.service_logo.red_bg{
+    background: #fb4f4f;
+}
+.service_logo img{
+    width: 0.48rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.service_txt1{
+    font-size: 0.26rem;
+	font-weight: bold;
+    color: #303030;
+    margin-top: 0.1rem;
+    margin-bottom: 0.2rem;
+}
+.service_txt2{
+    font-size: 0.24rem;
+	font-weight: bold;
+    color: #535353;
+}
+.service_tese{
+    padding-bottom: 0.3rem;
+}
+.service_box table{
+    width: 7.1rem;
+    margin-left: 0.2rem;
+    margin-top: 0.1rem;
+    table-layout: fixed;
+}
+.service_box table tr td{
+    width: 33.33%;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    font-size: 0.22rem;
+	font-weight: bold;
+    color: #505050;
+    text-align: center;
+}
+.service_box table tr td:nth-child(2){
+    color: #2f9bfe;
+}
+.service_box table tr:first-of-type td:nth-child(2){
+    background: #2f9bfe;
+	color: #ffffff;
+}
+.choose_box{
+    margin-top: 0.2rem;
+}
+.choose_list{
+    width: 2.9rem;
+    height: 3.5rem;
+    margin-left: 0.7rem;
+    float: left;
+    margin-bottom: 0.36rem;
+    padding: 0.1rem;
+    background: #fff;
+    box-shadow: 0rem 0.01rem 0.1rem 0rem rgba(0, 0, 0, 0.09);
+    border-radius: 0.1rem;
+}
+.choose_list:nth-child(2n){
+    margin-left: 0.36rem;
+}
+.choose_list img{
+    width: 0.54rem;
+    display: block;
+    margin: 0 auto 0.1rem;
+}
+.choose_title{
+    font-size: 0.26rem;
+    color: #656565;
+    text-align: center;
+    font-weight: bold;
+}
+.choose_txt{
+    font-size: 0.24rem;
+	line-height: 0.3rem;
+    color: #656565;
+    margin-top: 0.1rem;
+}
+.footer{
+    margin-top: 0.12rem;
+    background: #fff;
+    padding-top: 0.28rem;
+    text-align: center;
+    padding-bottom: 0.6rem;
+}
+.sanjiao{
+    width: 0.14rem;
+    display: block;
+    margin: 0 auto;
+}
+.footer_ti{
+    font-size: 0.26rem;
+	font-weight: bold;
+	line-height: 0.42rem;
+	color: #535353;
+}
+.footer_txt{
+    font-size: 0.2rem;
+	font-weight: bold;
+	line-height: 0.42rem;
+    color: #535353;
+    margin-top: 0.14rem;
+}
+.footer_des{
+    font-size: 0.24rem;
+	font-weight: bold;
+	line-height: 0.42rem;
+    color: #535353;
+    margin-top: 0.14rem;
+}
+.erweima{
+    width: 2.6rem;
+    display: block;
+    margin: 0.2rem auto 0;
+}
+.cover_box{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+    display: none;
+}
+.cover_wrap{
+    width: 6.3rem;
+    height: 8rem;
+    background: url("../img/lawyer/img_tan.png") no-repeat;
+    background-size: 100%;
+    box-shadow: 0rem 0rem 0.2rem 0rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
+    position: absolute;
+    top: 3.4rem;
+    left: 0.6rem;
+    padding-top: 0.6rem;
+}
+.cover_ti1,.cover_ti2{
+    font-size: 0.48rem;
+	font-weight: bold;
+    color: #f8f8fa;
+    margin-left: 1.4rem
+}
+.cover_ti2{
+    margin-left: 0.9rem;
+}
+.cover_ti3{
+    font-size: 0.3rem;
+	font-weight: bold;
+    color: #666666;
+    text-align: center;
+    margin-top: 1.3rem;
+}
+.cover_wrap input{
+    width: 5.2rem;
+	height: 0.88rem;
+	background: #e1e1e1;
+    border-radius: 0.44rem;
+    font-size: 0.24rem;
+	color: #000000;
+    opacity: 0.6;
+    line-height: 0.88rem;
+    padding-left: 0.3rem;
+    border: none;
+    display: block;
+    margin: 0.2rem auto;
+}
+.submit{
+    width: 5.2rem;
+	height: 0.88rem;
+    background-image: linear-gradient(to right, #6f9fff, #a1a7ff);
+    border-radius: 0.44rem;
+    border: none;
+    font-size: 0.36rem;
+	font-weight: 500;
+    color: #ffffff;
+    display: block;
+    margin: 0.7rem auto 0.2rem;
+}
+.cancle{
+    width: 5.2rem;
+	height: 0.88rem;
+	border-radius: 0.44rem;
+    border: solid 0.02rem #5f56e8;
+    font-size: 0.36rem;
+	font-weight: 500;
+    color: #5d56e7;
+    display: block;
+    margin: 0 auto;
+}

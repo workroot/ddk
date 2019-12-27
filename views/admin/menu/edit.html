@@ -1,0 +1,95 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('backend/menu/index')}">后台菜单</a></li>
+            <li class=""><a href="{:url('backend/menu/add')}">添加菜单</a></li>
+            <li class="layui-this">编辑菜单</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('backend/menu/update')}" method="post">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">上级菜单</label>
+                        <div class="layui-input-block">
+                            <select name="pid" lay-verify="required">
+                                <option value="0">一级菜单</option>
+                                {foreach name="admin_menu_level_list" item="vo"}
+                                <option value="{$vo.id}" {if condition="$admin_menu.id==$vo.id"} disabled="disabled"{/if} {if condition="$admin_menu.pid==$vo.id"} selected="selected"{/if}>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.title}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">菜单名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" value="{$admin_menu.title}" required  lay-verify="required" placeholder="请输入菜单名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">控制器方法</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" value="{$admin_menu.name}" required  lay-verify="required" placeholder="请输入控制器方法 如：admin/Index/index" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="" class="layui-form-label">图标</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="iconPicker" lay-filter="iconPicker" name="icon" value="{$admin_menu.icon}" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="status" value="1" title="显示" {if condition="$admin_menu.status==1"} checked="checked"{/if}>
+                            <input type="radio" name="status" value="0" title="隐藏" {if condition="$admin_menu.status==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="sort" value="{$admin_menu.sort}" required  lay-verify="required" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="hidden" name="id" value="{$admin_menu.id}">
+                            <button class="layui-btn" lay-submit lay-filter="*">更新</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__PUBLIC__/js/common.js?=123456"></script>
+<script>
+    layui.use(['iconPicker', 'form'], function () {
+        var iconPicker = layui.iconPicker,
+            form = layui.form;
+        iconPicker.render({
+            // 选择器，推荐使用input
+            elem: '#iconPicker',
+            // 数据类型：fontClass/unicode，推荐使用fontClass
+            type: 'fontClass',
+            // 是否开启搜索：true/false
+            search: true,
+            // 是否开启分页
+            page: true,
+            inc:'{$admin_menu.icon}',
+            // 每页显示数量，默认12
+            limit: 12,
+            // 点击回调
+            click: function (data) {
+                //console.log(data);
+            }
+        });
+    });
+</script>
+{/block}

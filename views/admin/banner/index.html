@@ -1,0 +1,73 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">轮播图管理</li>
+            <li class=""><a href="{:url('backend/banner/add')}">添加轮播图</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                <form class="layui-form layui-form-pane" action="{:url('backend/banner/index')}" method="get">
+				
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+						
+                    </div>
+                </form>
+                <hr>
+
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th style=" width:30px;">ID</th>
+                        <th>轮播图名称</th>
+                        <th>类型</th>
+						<th>轮播图图片</th>
+                  		<th>链接地址</th>
+                        <th>排序</th>
+                       <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="banner_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.names}</td>
+                        <td>
+                            {switch name="$vo.type"}
+                                {case value="1"}
+                                    轮播图片
+                                {/case}
+                                {case value="2"}
+                                    logo图片
+                                {/case}
+                            {/switch}
+                        </td>
+						<td class="image"><center><img style="height:100px;" src="{$vo.thumb}"/></center></td>
+                        <td>{$vo.hrefs}</td>
+						<td>{$vo.descc}</td>
+                        <td>
+                            <a href="{:url('backend/banner/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                            <a href="{:url('backend/banner/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+			
+                <!--分页-->
+                {$banner_list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

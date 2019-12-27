@@ -1,0 +1,73 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('backend/authagent/index')}">授权管理</a></li>
+            <li class=""><a href="{:url('backend/authagent/add')}">添加授权</a></li>
+            <li class="layui-this">编辑授权</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('backend/authagent/update')}" method="post">
+					<div class="layui-form-item">
+                        <label class="layui-form-label">代理商类型</label>
+                        <div class="layui-input-block">
+							<select name="aid" lay-search>
+								<option value="0">请选择</option>
+								{foreach name="agent_list" item="vo"}
+                                <option value="{$vo.id}" {if condition="$agent.aid==$vo.id"} selected="selected"{/if}>{$vo.agent_name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">产品</label>
+                        <div class="layui-input-block">
+							<select name="pid" lay-search>
+								<option value="0">请选择</option>
+								{foreach name="product_list" item="vo"}
+                                <option value="{$vo.id}" {if condition="$agent.pid==$vo.id"} selected="selected"{/if}>{$vo.name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                   	<div class="layui-form-item">
+                        <label class="layui-form-label">默认成本价</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="price" value="{$agent.price}" placeholder="请输入默认成本价" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">一级返佣</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="rebate" value="{$agent.rebate}" placeholder="一级返佣百分比" class="layui-input">
+                        </div>
+                    </div>
+                  	<div class="layui-form-item">
+                        <label class="layui-form-label">二级返佣</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="erjiprice" value="{$agent.erjiprice}" placeholder="请输入二级返佣百分比" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">最高定价</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="highestprice" value="{$agent.highestprice}" placeholder="该版本最高定价多少" class="layui-input">
+                        </div>
+                    </div>
+					
+					<div class="layui-form-item">
+                        <div class="layui-input-block">
+                             <input type="hidden" name="id" value="{$agent.id}">
+							<button class="layui-btn" lay-submit lay-filter="*">更新</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

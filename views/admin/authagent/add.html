@@ -1,0 +1,72 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('backend/authagent/index')}">授权管理</a></li>
+            <li class="layui-this">添加授权</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('backend/authagent/save')}" method="post">
+					<div class="layui-form-item">
+                        <label class="layui-form-label">代理商类型</label>
+                        <div class="layui-input-block">
+							<select name="aid" lay-search>
+								<option value="0">请选择</option>
+								{foreach name="agent_list" item="vo"}
+                                <option value="{$vo.id}">{$vo.agent_name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">产品</label>
+                        <div class="layui-input-block">
+							<select name="pid" lay-search>
+								<option value="0">请选择</option>
+								{foreach name="product_list" item="vo"}
+                                <option value="{$vo.id}">{$vo.name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">成本价</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="price" value="" placeholder="成本价" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">一级返佣</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="rebate" value="" placeholder="一级返佣" class="layui-input">
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">二级返佣</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="erjiprice" value="" placeholder="二级返佣" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">最高定价</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="highestprice" value="" placeholder="该版本最高定价多少" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+					
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

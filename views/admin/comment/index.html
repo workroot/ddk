@@ -1,0 +1,151 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <style>
+        .layui-input-block{
+            margin-left: 0px;
+            min-height: 0px;
+        }
+        .layui-layer-page .layui-layer-content{
+            overflow: inherit;
+        }
+    </style>
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">评论列表</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form layui-form-pane" id="myform" action="{:url('backend/comment/index')}"
+                      method="get">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{if condition=" isset($get['keyword'])"}{$get['keyword']}{/if}"
+                            placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input start_time" name="start_time" id="date1"
+                                   value="{if condition=" isset($get['start_time'])"}{$get['start_time']}{/if}">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">结束时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input end_time" name="end_time" id="date2"
+                                   value="{if condition=" isset($get['end_time'])"}{$get['end_time']}{/if}">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+                    </div>
+                </form>
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>用户</th>
+                        <th>平台</th>
+                        <th>内容</th>
+                        <th>点赞量</th>
+                        <th>回复量</th>
+                        <th>创建时间</th>
+                        <th width="8%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                    {foreach name="data" item="vo"}
+                    <tr>
+                        <td style="width:4%">{$vo.id}</td>
+                        <td style="width:10%">{if condition="isset($vo.uid) && $vo.uid > 0"}{$vo.uname}{else/}总部{/if}
+                        </td>
+                        <td style="width:8%">{$vo.name}</td>
+                        <td style="width:5%">{$vo.content}</td>
+                        <td style="width:15%;">{$vo.awesome}</td>
+                        <td style="width:8%;"><span class="res" style="color:#4b9ffa" data-id="{$vo.id}" data-cid="{$vo.cid}">{$vo.responses}</span></td>
+                        <td style="width:10%">{$vo.createdAt|date="Y-m-d H:i:s",###}</td>
+                        <td style="text-align:center; width:10%">
+                            <a href="javascript:void(0);"
+                               class="layui-btn layui-btn-xs huifus" data-commentId="{$vo.id}" data-id="{$vo.cid}" data-replyid="{$vo.uid}" data-name="{$vo.uname}">回复</a>
+                            <a href="{:url('backend/platform/index',['id'=>$vo['cid']])}"
+                               class="layui-btn layui-btn-xs layui-btn-normal">详情</a>
+                            <a href="{:url('backend/comment/delete',['id'=>$vo['id']])}"
+                               class="layui-btn layui-btn-danger layui-btn-xs ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+                <!--分页-->
+                {$data->render()}
+            </div>
+        </div>
+    </div>
+    {/block}
+    {block name="script"}
+    <script>
+        $('.res').on('click', function () {
+           var id =  $(this).attr('data-id');
+           var cid =  $(this).attr('data-cid');
+            layer.open({
+                type: 2,
+                area: ['800px', '320px'],
+                title:'回复',
+                fixed: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade: 0.8,
+                content: 'subdirectory?id='+id+'&cid='+cid
+            });
+        });
+
+        $(".huifus").on('click',function(){
+            var id = $(this).attr('data-id');
+            var replyid = $(this).attr('data-replyid');
+            var name = $(this).attr('data-name');
+            var commentId = $(this).attr('data-commentId');
+            layer.open({
+                type: 1,
+                area: ['350px', '200px'],
+                btn:['确定','取消'],
+                scrollbar: false,
+                content: '<form class="layui-form" action=""> ' +
+                    '<div class="layui-form-item layui-form-text">' +
+                    '<div class="layui-input-block">'+
+                    '<textarea name="contents" placeholder="@'+name+'" class="layui-textarea"></textarea>'+
+                    '</div>'+
+                    '</div>'+
+                    '</form>'
+                ,yes: function(index, layero){
+                    var contents = $('textarea[name="contents"]').val();
+                    $.ajax({
+                        url:'/backend/platform/reply',
+                        type:'post',
+                        dataType:'json',
+                        data:{'cid':id,'replyid':replyid,'pname':name,'commentId':commentId,'content':contents},
+                        success:function(info){
+                            if(info.code == 0){
+                                layer.msg(info.message,{tiem:300},function(){
+                                    window.location.reload();
+                                });
+                                layer.close(index);
+                            }else{
+                                layer.msg(info.message,{tiem:300});
+                            }
+                        }
+                    })
+                }
+            });
+
+        });
+
+        function excel() {
+            $("#myform").attr('action', "{:url('/backend/company/excel')}");
+        };
+    </script>
+    {/block}

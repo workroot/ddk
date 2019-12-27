@@ -1,0 +1,93 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">公告管理</li>
+            <li class=""><a href="{:url('backend/gonggao/add')}">添加公告</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                <form class="layui-form layui-form-pane" action="{:url('backend/gonggao/index')}" method="get">
+				
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+                    </div>
+                </form>
+                <hr>
+
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th style="width:30px;">ID</th>
+                        <th>公告名字</th>
+                        <th>类型</th>
+                        <th>排序</th>
+                        <th>创建时间</th>
+                       <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="gonggao_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td><b><a style="color:#007aff" href="javascript:title({$vo.id})">{$vo.title}</a></b></td>
+                        <td>
+                            {switch name="$vo.type" }
+                            {case value="2"}用户{/case}
+                            {case value="3"}代理{/case}
+                            {case value="4"}个人{/case}
+                            {default /}全部
+                            {/switch}
+                        </td>
+						<td>{$vo.descc}</td>
+                        <td>{$vo.createdAt|date="Y-m-d",###}</td>
+                        <td>
+                            <a href="{:url('backend/gonggao/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                            <a href="{:url('backend/gonggao/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+				
+                <!--分页-->
+                {$gonggao_list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function title(id){
+        $.ajax({
+            url:"{:url('backend/gonggao/title')}",
+            type:'post',
+            dateType:'json',
+            data:{'id':id},
+            success:function(json){
+                if(json.code == 0){
+                    layer.open({
+                        type: 1,
+                        title: false,
+                        area: ['800px','900px'], //宽高
+                        closeBtn: 0,
+                        shadeClose: true,
+                        skin: 'yourclass',
+                        content: '<div style="padding:50px;"><h2 class="detail-title" style="box-sizing: border-box; font-size: 24px; text-align: center; font-weight: 400; padding-right: 40px; white-space: normal;padding-bottom:20px;"></br>'+json.data.title+'</h2><div style="line-height: 40px;">'+json.data.content+'</div></div>'
+                    });
+                }else{
+                    layer.msg(json.msg);
+                }
+            }
+        })
+    }
+</script>
+{/block}

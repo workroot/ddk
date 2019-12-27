@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懂贷咖</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/mui.picker.min.css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/mui.dtpicker.css"> -->
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__ICSS__/income.css">
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/mui.picker.min.js"></script>
+    <!-- <script src="__PUBLIC__/js/mui.dtpicker.js"></script> -->
+</head>
+<body>
+    <div class="container">
+        <div class="headtop">
+            <div class="user_head">
+                <p>
+                    <img src="__IIMG__/dailishang/userhead_mm.png" alt="">小欧小
+                    <a href="{:url('/index/agent/ranking')}"><span class="iconfont iconpaihangbang---"></span></a>
+                </p>
+            </div>
+            <div class="total_income">
+                <p class="clearfix">
+                    <span class="income_left">今日收入(元):<i>420.00</i></span>
+                    <span class="income_right">今日客户:<i>672</i></span>
+                </p>
+                <p class="clearfix">
+                    <span class="income_left">累计收入(元):<i>12000.00</i></span>
+                    <span class="income_right">累计客户:<i>5263</i></span>
+                </p>
+            </div>
+            <p class="income_tab">
+                <span class="active">借款平台查询</span>
+                <span>律师咨询服务</span>
+            </p>
+        </div>
+        <div class="choose_box">
+            <div class="choose_time">
+                <span class="time_start">2019.08.30</span>至
+                <span class="time_end">2019.08.31</span>
+                <span class="iconfont iconrili"></span>
+            </div>
+            <div class="choose_type" name="" id="" data-val="1">
+                <span class="choose_txt">本人</span>
+                <span class="sanjiaoxing"></span>
+            </div>
+            <ul>
+                <li data-val="1">本人</li>
+                <li data-val="2">下级</li>
+            </ul>
+        </div>
+        <div class="table_box">
+            <div class="search_box active">
+                <table>
+                    <tr>
+                        <th>手机号</th>
+                        <th>时间</th>
+                        <th>查询平台</th>
+                        <th>提成</th>
+                    </tr>
+                    <tr>
+                        <td>131****5689</td>
+                        <td>09:23</td>
+                        <td>宜人贷</td>
+                        <td>22.88</td>
+                    </tr>
+                    <tr>
+                        <td>138****5729</td>
+                        <td>09:23</td>
+                        <td>你我贷</td>
+                        <td>22.88</td>
+                    </tr>
+                    <tr>
+                        <td>133****6451</td>
+                        <td>09:23</td>
+                        <td>人人贷</td>
+                        <td>22.88</td>
+                    </tr>
+                    <tr>
+                        <td>132****8951</td>
+                        <td>09:23</td>
+                        <td>人人贷</td>
+                        <td>22.88</td>
+                    </tr>
+                    <tr>
+                        <td>137****8589</td>
+                        <td>09:23</td>
+                        <td>宜人贷</td>
+                        <td>22.88</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="search_box">
+                <table>
+                    <tr>
+                        <th>手机号</th>
+                        <th>时间</th>
+                        <th>在线/预设</th>
+                        <th>提成</th>
+                    </tr>
+                    <tr>
+                        <td>131****5689</td>
+                        <td>09:23</td>
+                        <td>在线</td>
+                        <td>22.88</td>
+                    </tr>
+                    <tr>
+                        <td>138****5729</td>
+                        <td>09:23</td>
+                        <td>预设</td>
+                        <td>22.88</td>
+                    </tr>
+                    <tr>
+                        <td>133****6451</td>
+                        <td>09:23</td>
+                        <td>在线</td>
+                        <td>22.88</td>
+                    </tr>
+                    <tr>
+                        <td>132****8951</td>
+                        <td>09:23</td>
+                        <td>在线</td>
+                        <td>22.88</td>
+                    </tr>
+                    <tr>
+                        <td>137****8589</td>
+                        <td>09:23</td>
+                        <td>预设</td>
+                        <td>22.88</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="tabbar">
+            <div class="tab_item active">
+                <p><span class="iconfont iconmingxi"></span></p>
+                <p>收入明细</p>
+            </div>
+            <div class="tab_item">
+                <p><span class="iconfont iconchanpintuiguang"></span></p>
+                <p>产品推广</p>
+            </div>
+            <div class="tab_item">
+                <p><span class="iconfont iconsee-icon-m3-notice-fill"></span></p>
+                <p>平台公告</p>
+            </div>
+            <div class="tab_item">
+                <p><span class="iconfont iconicon-test"></span></p>
+                <p>个人中心</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+        $(".income_tab span").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+            var index = $(this).index();
+            $(".search_box").eq(index).addClass("active").siblings().removeClass("active");
+        })
+        $(".choose_type").click(function(){
+            $(".choose_box ul").show()
+        })
+        $(".choose_box ul li").click(function(){
+            var txt = $(this).html();
+            var val = $(this).data("val");
+            $(".choose_type").find(".choose_txt").html(txt);
+            $(".choose_type").attr("data-val",val);
+            $(".choose_box ul").hide()
+        })
+        $(".tab_item").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+        })
+        $(".time_start").click(function(){
+            var dtpicker = new mui.DtPicker(
+                {
+                    type: "date", //设置日历初始视图模式
+                    beginDate: new Date(2000, 01, 01), //设置开始日期
+                    endDate: new Date() 
+                }
+            );
+            dtpicker.show(function (selectItems) {
+                $(".time_start").text(selectItems.text)
+            })
+        })
+        $(".time_end").click(function(){
+            var dtpicker = new mui.DtPicker(
+                {
+                    type: "date", //设置日历初始视图模式
+                    beginDate: new Date(2000, 01, 01), //设置开始日期
+                    endDate: new Date() 
+                }
+            );
+            dtpicker.show(function (selectItems) {
+                $(".time_end").text(selectItems.text)
+            })
+        })
+    })
+</script>
+</html>

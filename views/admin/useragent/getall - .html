@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+
+        <title>Org Chart</title>
+        <link rel="stylesheet" href="__JS__/chartree/demo.css"/>
+        <link rel="stylesheet" href="__JS__/chartree/jquery.orgchart.css"/>
+        <style>
+        span.title {
+            font-weight: normal;
+            font-style: italic;
+            color: #404040;
+        }
+        </style>
+        <script src="__JS__/chartree/jquery-1.12.3.min.js"></script>
+        <script src="__JS__/chartree/jquery.orgchart.js"></script>
+        <script>
+        $(function() {
+            $("#organisation").orgChart({container: $("#main")});
+        });
+        </script>
+    </head>
+
+    <body>
+
+        
+
+            
+<!-- <ul id="organisation" style="display:none;">
+<li>傻逼
+
+                {foreach name="$userlist" item="vo"} 
+                    <ul>
+                        <li>
+                            $vo['names']<br />
+                        </li>
+                        <li>
+                            $vo['agent_name']<br />
+                        </li>
+                    </ul>
+
+                {/foreach}
+</li></ul> -->
+
+            <ul id="organisation" style="display:none;">
+                <li>Caprica Software
+                    <ul>
+                            <li>Sales<br/>
+                                <ul>
+                                    <li>Richard Toole<br/><span class='title'>Minion</span></li>
+                                    <li>Sales<br/>
+                                <ul>
+                                    <li>Richard Toole<br/><span class='title'>Minion</span></li>
+                                    <li>Sales<br/>
+                                <ul>
+                                    <li>Richard Toole<br/><span class='title'>Minion</span></li>
+                                    <li>Sales<br/>
+                                <ul>
+                                    <li>Richard Toole<br/><span class='title'>Minion</span></li>
+                                    <li>Noah Scruples<br/><span class='title'>Minion</span></li>
+                                </ul>
+                            </li>
+                                </ul>
+                            </li>
+                                </ul>
+                            </li>
+                                </ul>
+                            </li>
+                            
+                       
+                    </ul>
+                </li>
+            </ul>
+        
+        
+
+        <div id="content">
+        
+           
+        
+            <div id="main">
+            </div>
+            
+            
+
+        </div>
+            
+  </body>
+
+</html>

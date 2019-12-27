@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>广告文案</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__ICSS__/propaganda.css">
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <p class="propaganda_tab">
+            <span class="active">广告文案</span>
+            <span>相关资讯</span>
+        </p>
+        <div class="content">
+            <div class="propaganda_list">
+                <a href="{:url('/index/agent/article')}">
+                    <p class="propaganda_ti">钻石信用升级了！<span>置顶</span></p>
+                    <p class="propaganda_txt">钻石信用在广大合作商的支持下，从最开始的每天个位数订单，稳健发展至今每天订单2万+，8.25日更是创下单日访问用户1000万+的绝佳数据，创造行业奇迹。9月来临，应合作商们的要求，对系统进行了升级，数据更加精准，推广赚钱更加方便。</p>
+                    <div class="pic_box clearfix">
+                        <img src="__IIMG__/img_commit1.png" alt="">
+                        <img src="__IIMG__/img_commit2.png" alt="">
+                        <img src="__IIMG__/img_commit3.png" alt="">
+                    </div>
+                    <p class="propaganda_time">09.04</p>
+                    <button class="copy_btn">复制链接</button>
+                </a>
+            </div>
+            <div class="propaganda_list">
+                <a href="{:url('/index/agent/article')}">
+                    <p class="propaganda_ti">抖音高利贷广告投诉成灾，众多年轻人深陷网贷泥潭</p>
+                    <p class="propaganda_txt">最近有消息报道，某网友在抖音上看到某网贷平台的广告，宣传最高30万，可分36期还款，日利率只需要0.02%起，无抵押放款快。点击下载APP进行注册之后，经过一番资料的填写，最终审批居然只有2000元</p>
+                    <div class="pic_box clearfix">
+                        <img src="__IIMG__/img_commit1.png" alt="">
+                        <img src="__IIMG__/img_commit2.png" alt="">
+                        <img src="__IIMG__/img_commit3.png" alt="">
+                    </div>
+                    <p class="propaganda_time">09.04</p>
+                    <input type="hidden" name="" id="" value="javascript:;">
+                    <button class="copy_btn">复制链接</button>
+                </a>
+            </div>
+        </div>
+        <div class="tabbar">
+            <div class="tab_item">
+                <p><span class="iconfont iconmingxi"></span></p>
+                <p>收入明细</p>
+            </div>
+            <div class="tab_item">
+                <p><span class="iconfont iconchanpintuiguang"></span></p>
+                <p>产品推广</p>
+            </div>
+            <div class="tab_item active">
+                <p><span class="iconfont iconsee-icon-m3-notice-fill"></span></p>
+                <p>平台公告</p>
+            </div>
+            <div class="tab_item">
+                <p><span class="iconfont iconicon-test"></span></p>
+                <p>个人中心</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+        $(".propaganda_tab span").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+        })
+        $(".tab_item").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+        })
+    })
+</script>
+</html>

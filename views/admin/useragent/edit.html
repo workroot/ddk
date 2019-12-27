@@ -1,0 +1,108 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('backend/useragent/index')}">代理商管理</a></li>
+            <li class=""><a href="{:url('backend/useragent/add')}">添加代理商</a></li>
+            <li class="layui-this">编辑代理商</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('backend/useragent/update')}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">姓名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="names" value="{$user.names}" required lay-verify="required" placeholder="请输入姓名" class="layui-input">
+                        </div>
+                    </div>
+                   <!-- <div class="layui-form-item">
+                        <label class="layui-form-label">身份证</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="idcard" value="{$user.idcard}" required lay-verify="required|identity" placeholder="请输入身份证" class="layui-input">
+                        </div>
+                    </div>-->
+					<div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="password" placeholder="留空为不改密码" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">电话</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="mobile" value="{$user.mobile}" required lay-verify="required|phone|number" placeholder="请输入手机" class="layui-input">
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">代理商</label>
+                        <div class="layui-input-block">
+							<select name="agent_class" lay-search>
+								<option value="0">无代理商</option>
+								{foreach name="agent_list" item="vo"}
+                                <option value="{$vo.id}" {if condition="$user.agent_class==$vo.id"} selected="selected"{/if}>{$vo.agent_name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+					<div class="layui-form-item">
+                        <label class="layui-form-label">上级</label>
+                        <div class="layui-input-block">
+							<select name="pid" lay-search>
+								<option value="0">无上级</option>
+								{foreach name="user_list" item="vo"}
+                                <option value="{$vo.id}" {if condition="$user.pid == $vo.id"} selected="selected"{/if}>{$vo.names}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+					
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="status" value="1" title="启用" {if condition="$user.status==1"} checked="checked"{/if}>
+                            <input type="radio" name="status" value="0" title="禁用" {if condition="$user.status==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+             
+                  
+                   <?php if($aid == 1){ ?>
+                  <div class="layui-form-item">
+                        <label class="layui-form-label">余额</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="money" value="{$user.money}"  placeholder="请输入余额" class="layui-input">
+                        </div>
+                    </div>
+                    <?php } ?>
+					
+					<div class="layui-form-item">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="note" value="{$user.note}" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                             <input type="hidden" name="id" value="{$user.id}">
+							<button class="layui-btn" lay-submit lay-filter="*">更新</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+	form.on('select(province)', function(data){
+	   $.post("{:url('backend/user/ajax_city')}",{cid:data.value},function(result){
+			$("#city").html("");
+			$("#city").html(result);
+			form.render('select');
+	   },"html");  
+	});
+</script>
+{/block}

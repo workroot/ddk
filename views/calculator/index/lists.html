@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>法律问答</title>
+    <link rel="stylesheet" href="__PUBLICS__/calculator/css/style.css">
+    <link rel="stylesheet" href="__PUBLICS__/calculator/css/index.css">
+</head>
+<body>
+<div class="container">
+    <div class="content question_box">
+        <p class="lawyer_ques">
+            <img src="__PUBLICS__/calculator/img/2.1.png" alt="">法律问答
+            <img src="__PUBLICS__/calculator/img/2.2.png" alt="">
+        </p>
+        <?php $i = 0; ?>
+        {foreach name="data" item="vo"}
+        <?php $i++ ;?>
+        <div class="question_list clearfix">
+            <p class="ques_left" style="font-size:0.26rem;">{$i}.{$vo.title}</p>
+            <p class="ques_right">
+                <a href="{:url('/calculator/index/unlock',['id'=>$vo.id])}">
+                    <button style="font-size:0.24rem;">查看答案</button>
+                </a>
+            </p>
+        </div>
+        {/foreach}
+    </div>
+    <div class="content">
+        <p class="lawyer_ques">在线评论</p>
+        <ul class="demo1">
+            {volist name="comment" id="vo"}
+            <li class="comment_box">
+                <div class="comment_left">
+                    {if condition="$vo.types eq 1"}
+                    <img src="__PUBLICS__/calculator/img/4.3.3.png" alt="">
+                    {else/}
+                    <img src="__PUBLICS__/calculator/img/4.3.png" alt="">
+                    {/if}
+                </div>
+                <div class="comment_right" style="width:6rem;">
+                    <p class="comment_user">{$vo.title|mb_substr=0,1,'utf-8'}**尾号{$vo.thumb} {$vo.jianjie}</p>
+                    <p class="comment_cont">{$vo.content|htmlspecialchars_decode|strip_tags|mb_substr=0,100,'utf-8'}</p>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+            {/volist}
+        </ul>
+        <p class="comment_ti">
+            评论内容：
+        </p>
+        <div class="text-area">
+            <textarea name="content" id="" cols="30" rows="10" placeholder="很高兴得到你的反馈"></textarea>
+        </div>
+        <button class="sub_comment">提交评论</button>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</body>
+<script src="__PUBLIC__/js/jquery.min.js"></script>
+<script src="/public/bootstrap/js/jquery.bootstrap.newsbox.min.js"></script>
+<script src="/public/layer/layer.js"></script>
+<script>
+    $(".demo1").bootstrapNews({
+        newsPerPage: 5,
+        autoplay: true,
+        pauseOnHover: true,
+        navigation: false,
+        direction: 'up',
+        newsTickerInterval: 4000,
+        onToDo: function () {
+
+        }
+    });
+
+    $(document).ready(function(){
+        $('.sub_comment').on('click',function(){
+            var uid = '{$uid}';
+            if(uid == ''){
+                layer.msg('请先去登录');
+                return ;
+            }
+           var content = $('textarea[name="content"]').val();
+           var loading = layer.load(0);
+           $(this).attr("disabled","true");
+            $.ajax({
+                url:'{:url("/api/complaint/comment")}',
+                type:'post',
+                dataType:'json',
+                data:{'content':content,type:2},
+                success:function(json){
+                    layer.close(loading);
+                    $(this).removeAttr('disabled');
+                    if(json == 10){
+                        layer.msg('非法操作');
+                    }else if(json == 0){
+                        layer.msg('提交失败');
+                    }else{
+                        layer.msg('提交成功',{'time':1000},function(){
+                            history.go();
+                        })
+                    }
+                }
+            })
+        })
+    });
+</script>
+</html>

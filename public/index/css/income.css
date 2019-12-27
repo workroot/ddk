@@ -1,0 +1,237 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #F4F4F4;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.headtop{
+    width: 100%;
+    height: 3.82rem;
+    position: relative;
+    background: #fff;
+}
+.user_head{
+    height: 2.12rem;
+    background: #7785eb;
+    padding-top: 0.2rem;
+}
+.user_head p{
+    font-size: 0.36rem;
+    color: #ffffff;
+    line-height: 0.8rem;
+    position: relative;
+    padding-left: 1.34rem;
+}
+.user_head p img{
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0.4rem;
+}
+.user_head p .iconfont{
+    font-size: 0.3rem;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    right: 0.2rem;
+    transform: translateY(-50%);
+}
+.total_income{
+    width: 7.1rem;
+    height: 1.4rem;
+	background-color: #ffffff;
+    border-radius: 0.1rem;
+    box-shadow: 0rem 0rem 0.047rem 0.003rem rgba(4, 0, 0, 0.35);
+    position: absolute;
+    top: 1.42rem;
+    left: 0.2rem;
+    padding: 0.14rem 0.3rem;
+}
+.income_left{
+    display: block;
+    width: 3.8rem;
+    float: left;
+    font-size: 0.3rem;
+	line-height: 0.56rem;
+	color: #666666;
+}
+.income_right{
+    display: block;
+    float: left;
+    font-size: 0.3rem;
+	line-height: 0.56rem;
+	color: #666666;
+}
+.income_left i,.income_right i{
+    color: #333333;
+    font-style: normal;
+}
+.income_tab{
+    width: 100%;
+    padding: 0 0.4rem;
+    font-size: 0.3rem;
+	line-height: 0.86rem;
+    color: #333333;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+}
+.income_tab span{
+    line-height: 0.86rem;
+    color: #333333;
+}
+.income_tab span.active{
+    color: #7785eb;
+    border-bottom: 0.02rem solid #7785eb;
+}
+.choose_box{
+    height: 0.9rem;
+    padding: 0.2rem;
+    position: relative;
+}
+.choose_time{
+    width: 4.72rem;
+	height: 0.5rem;
+    background-color: #ffffff;
+    padding: 0 0.3rem;
+    font-size: 0.26rem;
+    color: #333;
+    line-height: 0.5rem;
+}
+.choose_time span{
+    font-size: 0.26rem;
+    color: #333;
+    line-height: 0.5rem;
+}
+.choose_time span.iconfont{
+    font-size: 0.26rem;
+    color: #304FFE;
+}
+.time_start,.time_end{
+    display: inline-block;
+    width: 1.6rem;
+}
+.time_end{
+    margin-left: 0.2rem;
+}
+.choose_type{
+    display: block;
+    width: 2.18rem;
+    height: 0.5rem;
+    background: #fff;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    font-size: 0.26rem;
+    line-height: 0.5rem;
+    color: #333333;
+    padding: 0 0.3rem;
+}
+.sanjiaoxing{
+    content: '';
+    width: 0;
+    left: 0;
+    border-style: solid;
+    border-width: 0.16rem 0.08rem;
+    border-color: #7785eb transparent transparent transparent;
+    float: right;
+    line-height: 0.5rem;
+    margin-top: 0.16rem;
+}
+.choose_box ul{
+    width: 2.18rem;
+    background: #fff;
+    position: absolute;
+    top: 0.74rem;
+    right: 0.2rem;
+    display: none;
+}
+.choose_box ul li{
+    font-size: 0.26rem;
+    color: #333;
+    line-height: 0.5rem;
+    padding-left: 0.3rem;
+}
+.search_box{
+    display: none;
+}
+.search_box.active{
+    display: block;
+}
+.search_box table{
+    width: 100%;
+    table-layout: fixed;
+}
+.search_box table tr{
+    height: 0.5rem;
+    line-height: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-size: 0.26rem;
+    padding: 0 0.2rem;
+    text-align: center;
+}
+.search_box table tr th{
+    font-weight: normal;
+}
+.search_box table tr:first-of-type{
+    background: #fff;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    font-size: 0.3rem;
+}
+.search_box table tr th:first-of-type,.search_box table tr td:first-of-type{
+    text-align: left;
+    padding-left: 0.2rem;
+}
+.search_box table tr th:last-of-type,.search_box table tr td:last-of-type{
+    text-align: right;
+    padding-right: 0.2rem;
+}
+.search_box table tr:nth-child(2n){
+    background: #7785eb;
+    color: #fff;
+}
+.tabbar{
+    height: 1rem;
+    width: 100%;
+    max-width: 750px;
+    min-width: 320px;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tab_item{
+    width: 25%;
+    float: left;
+    text-align: center;
+    padding-top: 0.1rem;
+}
+.tab_item p .iconfont{
+    font-size: 0.46rem;
+    color: #666666;
+}
+.tab_item p{
+    font-size: 0.24rem;
+	color: #666;
+}
+.tab_item.active p{
+    color: #7785eb;
+}
+.tab_item.active p .iconfont{
+    color: #7785eb;
+}
+.mui-dtpicker{
+    bottom: -8px;
+}
+.mui-dtpicker{
+    box-shadow: none;
+}

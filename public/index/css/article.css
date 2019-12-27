@@ -1,0 +1,55 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #fff;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.content{
+    padding: 0.2rem 0.2rem 1rem 0.2rem;
+}
+.content h5{
+    font-size: 0.32rem;
+	color: #333333;
+}
+.release_time{
+    font-size: 0.24rem;
+    color: #666;
+    line-height: 0.32rem;
+    padding-left: 0.52rem;
+    position: relative;
+    margin-top: 0.2rem;
+}
+.release_time img{
+    width: 0.32rem;
+    height: 0.32rem;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.article_cont{
+    font-size: 0.28rem;
+    color: #333;
+    line-height: 0.42rem;
+    margin-top: 0.1rem;
+    padding-bottom:0.5rem;
+    border-bottom: 0.02rem solid #f4f4f4;
+}
+.article_cont img{
+    width: 100%;
+    margin-top: 0.1rem;
+}
+.copy_btn{
+    width: 1.74rem;
+	height: 0.46rem;
+	background-color: #7785eb;
+    border-radius: 0.1rem;
+    font-size: 0.28rem;
+    color: #fff;
+    display: block;
+    margin: 0.2rem auto;
+    border: none;
+}

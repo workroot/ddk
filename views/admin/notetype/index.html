@@ -1,0 +1,55 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">文章类型管理</li>
+            <li class=""><a href="{:url('backend/notetype/add')}">添加文章类型</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form layui-form-pane" action="{:url('backend/notetype/index')}" method="get">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+                    </div>
+                </form>
+                <hr>
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th>文章类型名称</th>
+						<th>文章类型图标</th>
+                        <th>排序</th>
+                       <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="notetype_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.tname}</td>
+						  <td class="image"><center>{if condition="isset($vo.thumb) && !empty($vo.thumb)"}<img style="height:80px; width:80px;" src="{$vo.thumb}"/>{/if}</center></td>
+						<td>{$vo.descc}</td>
+                        <td>
+                            <a href="{:url('backend/notetype/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                            <a href="{:url('backend/notetype/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+                <!--分页-->
+                {$notetype_list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

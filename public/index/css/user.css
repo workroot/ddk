@@ -1,0 +1,243 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #fff;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+header{
+    width: 100%;
+    height: 2.7rem;
+    background: url("../img/user_bg.png") bottom #fff;
+    background-size: 100%;
+    padding-top: 0.56rem;
+    position: relative;
+}
+header .user_head{
+    width: 1.3rem;
+    height: 1.3rem;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+header p{
+    font-size: 0.3rem;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0.12rem;
+}
+header span.iconfont{
+    font-size: 0.28rem;
+    color: #fff;
+    position: absolute;
+    top: 0.64rem;
+    right: 0.48rem;
+}
+.tab_box{
+    height: 1.4rem;
+    background: #fff;
+    /* padding: 0 0.6rem; */
+    display: flex;
+    justify-content: space-between;
+}
+.tab_list{
+    width: 1.2rem;
+    height: 1.4rem;
+    float: left;
+    text-align: center;
+    padding-top: 0.3rem;
+}
+.tab_list p .iconfont{
+    font-size: 0.4rem;
+    color: #1e1e1e;
+}
+.tab_list p{
+    color: #1e1e1e;
+    font-size: 0.28rem;
+}
+.tab_list.active{
+    border-bottom: 0.02rem solid #f56f70;
+}
+.tab_list.active p,.tab_list.active p .iconfont{
+    color: #f56f70;
+}
+.gray_bg{
+    width: 100%;
+    height: 0.3rem;
+    background: #f0f0f0;
+}
+.content_box{
+    padding: 0 0.2rem;
+}
+.nodate{
+    padding-top: 0.4rem;
+    display: none;
+}
+.nodate img{
+    width: 3.1rem;
+    display: block;
+    margin: 0 auto 0.2rem;
+}
+.nodate p{
+    font-size: 0.28rem;
+    color: #666666;
+    text-align: center;
+}
+.nodate button{
+    width: 2.14rem;
+	height: 0.6rem;
+	background-color: #7a88eb;
+    border-radius: 0.07rem;
+    font-size: 0.28rem;
+    color: #ffffff;
+    display: block;
+    margin: 0.1rem auto;
+    border: none;
+}
+.tab_content{
+    display: none;
+}
+.tab_content.active{
+    display: block;
+}
+.concern_bot ul li{
+    height: 1.8rem;
+    padding: 0.3rem 0;
+    border-bottom: 0.02rem solid #f7f7f7;
+}
+.concern_bot ul li .concern_left{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    border: 0.02rem solid #E1E1E1;
+    float: left;
+    padding-top: 0.16rem;
+    position: relative
+}
+.concern_bot ul li .concern_left img{
+    width: 0.7rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.concern_bot ul li .concern_cen{
+    float: left;
+    margin-left: 0.2rem;
+    padding-top: 0.06rem;
+}
+.concern_bot ul li .concern_cen p:nth-child(1){
+    font-size: 0.28rem;
+	line-height: 0.38rem;
+	color: #1e1e1e;
+}
+.concern_bot ul li .concern_cen p:nth-child(2),.concern_bot ul li .concern_cen p:nth-child(3){
+    font-size: 0.22rem;
+	line-height: 0.38rem;
+	color: #1e1e1e;
+}
+.concern_bot ul li .concern_cen p:nth-child(2) span,.concern_bot ul li .concern_cen p:nth-child(3) span{
+    color: #f56f70;
+}
+.concern_bot ul li .concern_right{
+    float: right;
+    width: 1.5rem;
+    height: 1.2rem;
+    position: relative;
+}
+.concern_bot ul li .concern_right button{
+    width: 1.5rem;
+	height: 0.56rem;
+	border-radius: 0.1rem;
+    border: solid 0.02rem #e0e0e0;
+    font-size: 0.26rem;
+    color: #666666;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.commit_list{
+    padding: 0.3rem 0;
+    border-bottom: 0.02rem solid #f7f7f7;
+}
+.commit_head_left{
+    width: 0.8rem;
+    height: 0.6rem;
+    float: left;
+    position: relative;
+}
+.commit_head_left img{
+    width: 0.6rem;
+    height: 0.6rem;
+    object-fit: cover;
+    position: absolute;
+    top: 0.04rem;
+    left: 0;
+}
+.commit_head_right{
+    float: left;
+}
+.commit_username{
+    font-size: 0.26rem;
+	color: #333333;
+}
+.commit_time{
+    font-size: 0.24rem;
+	color: #999999;
+}
+.commit_txt{
+    font-size: 0.28rem;
+	line-height: 0.38rem;
+    color: #1e1e1e;
+    margin-top: 0.1rem;
+    margin-bottom: 0.2rem;
+}
+.commit_zan{
+    font-size: 0.22rem;
+	color: #1e1e1e;
+}
+.commit_zan img{
+    width: 0.24rem;
+    position: relative;
+    top: 0.02rem;
+}
+.commit_zan span{
+    float: right;
+}
+.commit_reply{
+    background: #f7f7f7;
+    padding: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+.reply_user{
+    font-size: 0.26rem;
+	line-height: 0.42rem;
+    color: #795fff;
+    position: relative;
+    padding-left: 0.56rem;
+}
+.reply_user img{
+    width: 0.42rem;
+    height: 0.42rem;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+}
+.reply_txt{
+    font-size: 0.24rem;
+	line-height: 0.36rem;
+    color: #1e1e1e;
+    margin-top: 0.1rem;
+}
+.last_tips{
+    font-size: 0.26rem;
+	line-height: 0.38rem;
+    color: #999999;
+    text-align: center;
+    margin-top: 0.7rem;
+}

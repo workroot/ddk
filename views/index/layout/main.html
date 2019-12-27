@@ -1,0 +1,30 @@
+<?php
+use think\Request;
+$type = Request::instance()->controller();
+?>
+<div class="tabbar">
+    <a href="{:url('/index/income/index')}">
+    <div class="tab_item {if condition=" $type == 'Income'"}active{/if}">
+        <p><span class="iconfont iconmingxi"></span></p>
+        <p>收入明细</p>
+    </div>
+    </a>
+    <a href="{:url('/index/promotion/index')}">
+    <div class="tab_item {if condition=" $type == 'Promotion'"}active{/if}">
+        <p><span class="iconfont iconchanpintuiguang"></span></p>
+        <p>产品推广</p>
+    </div>
+    </a>
+    <a href="{:url('/index/announcement/index?tid=2')}">
+    <div class="tab_item {if condition=" $type == 'Announcement'"}active{/if}">
+        <p><span class="iconfont iconsee-icon-m3-notice-fill"></span></p>
+        <p>平台公告</p>
+    </div>
+    </a>
+    <a href="{:url('/index/personal/index')}">
+    <div class="tab_item {if condition=" $type == 'Personal'"}active{/if}">
+        <p><span class="iconfont iconicon-test"></span></p>
+        <p>个人中心</p>
+    </div>
+    </a>
+</div>

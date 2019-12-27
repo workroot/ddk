@@ -1,0 +1,65 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #f4f4f4;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.clear{clear: both;}
+.content{
+    background: #fff;
+    padding: 0.2rem;
+}
+.price_box{
+    border-bottom: 0.02rem solid #f4f4f4;
+    margin-bottom: 0.2rem;
+}
+.price_ti1{
+    font-size: 0.26rem;
+    color: #333333;
+    margin-bottom: 0.2rem;
+}
+.price_box input{
+    width: 100%;
+    height: 0.4rem;
+    border: none;
+    margin-bottom: 0.2rem;
+    float: left;
+    font-size: 0.26rem;
+    padding: 0;
+}
+.price_box input::-webkit-input-placeholder{
+    color:#ccc;
+}
+.price_box input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:#ccc;
+}
+.price_box input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:#ccc;
+}
+.price_box input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    color:#ccc;
+}
+.yong{
+    font-size: 0.26rem;
+    color: #666666;
+    margin-top: 0.58rem;
+    margin-bottom: 0.14rem;
+}
+.btn_box{
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+.submit_btn{
+    width: 1.72rem;
+	height: 0.7rem;
+	background-color: #7785eb;
+    border-radius: 0.1rem;
+    display: block;
+    margin: 0.5rem auto;
+    font-size: 0.26rem;
+    color: #ffffff;
+    border: none;
+}

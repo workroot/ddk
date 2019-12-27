@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>计算器后台</title>
+    {block name="css"}{/block}
+    <link rel="stylesheet" href="__PUBLICS__/calculator/admin/css/layui.css">
+</head>
+
+<style>
+    .layui-layout-admin .layui-logo {
+        background: #282751;
+    }
+
+    .layui-layout-admin .layui-side {
+        top: 0px;
+    }
+</style>
+
+<body class="layui-layout-body">
+<div class="layadmin-side-spread-sm">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" style="height: 73px;">
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="https://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="{:url('/calculator/login/logout')}">
+                    <img src="__PUBLICS__/calculator/admin/images/img/tuichu.png" alt="退出" title="退出">
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="layui-side layui-side-menu" style="z-index: 9999999;">
+        <div class="layui-side-scroll">
+            <div class="layui-logo" lay-href="">
+                <span>计算工具后台</span>
+            </div>
+            <ul class="layui-nav layui-nav-tree" lay-filter="test layadmin-system-side-menu" lay-shrink="all"
+                id="LAY-system-side-menu" style="top: 73px;">
+                <li class="layui-nav-item">
+                    <a class="" href="{:url('/calculator/aindex/index')}">
+                        <img src="__PUBLICS__/calculator/admin/images/img/shouye.png"/>首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页
+                    </a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{:url('/calculator/acomment/index')}">
+                        <img src="__PUBLICS__/calculator/admin/images/img/pinglun.png"/>评论审核
+                    </a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{:url('/calculator/apay/index')}">
+                        <img src="__PUBLICS__/calculator/admin/images/img/zhifu.png"/>支付记录
+                    </a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{:url('/calculator/acontent/index')}">
+                        <img src="__PUBLICS__/calculator/admin/images/img/neirong.png"/>内容管理
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--主体-->
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 20px;">
+            {block name="body"} {/block}
+        </div>
+    </div>
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <!-- © layui.com - 底部固定区域 -->
+    </div>
+</div>
+</div>
+<script src="__PUBLICS__/calculator/admin/js/jquery-1.8.3.min.js"></script>
+<script>
+    // 定义全局JS变量
+    var GV = {
+        current_controller: "calculator/{$controller|default=''}/",
+        base_url: "__PUBLICS__"
+    };
+</script>
+<script src="__PUBLICS__/calculator/layui/layui.all.js"></script>
+<script src="__PUBLICS__/calculator/admin/js/cadmin.js?v=1597"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+</script>
+
+{block name="js"}{/block}
+<!--页面JS脚本-->
+{block name="script"}{/block}
+</body>
+</html>

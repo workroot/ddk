@@ -1,0 +1,22 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #fff;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.content{
+    padding: 0.2rem;
+}
+.problem{
+    font-size: 0.3rem;
+    color: #333;
+    margin-bottom: 0.1rem;
+}
+.answer{
+    font-size: 0.3rem;
+    color: #333;
+    line-height: 0.46rem;
+    margin-bottom: 0.5rem;
+}

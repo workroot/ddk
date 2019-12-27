@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>银行卡</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/mui.picker.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/layer/mobile/meed/layer.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__ICSS__/bank.css">
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/mui.picker.min.js"></script>
+    <script src="__PUBLIC__/layer/layer.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="bank_list bank_gs">
+            <!-- <p class="card_num">****   ****   ****   8596</p> -->
+            <span class="relieve">解除绑定</span>
+        </div>
+        <a class="add_bank" href="{:url('/index/agent/addBank')}">添加银行卡</a>
+        <div class="cover">
+            <div class="cover_wrap">
+                <p class="relieve_ti">解除绑定</p>
+                <input type="text" value="13125074189">
+                <input class="psd" type="password" name="" id="" placeholder="请输入登录密码">
+                <div class="clear"></div>
+                <div class="relieve_btn clearfix">
+                    <button class="cancel">取消</button>
+                    <button class="sure">确定</button>
+                </div>
+                <!-- 剩下一张银行的时候提示 -->
+                <p class="relieve_tips">这是您最后一张银行卡,解绑后将只能提现到支付宝账户。</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+        $(".relieve").click(function(){
+            $(".cover").show()
+        })
+        $(".cancel").click(function(){
+            $(".cover").hide()
+        })
+        $(".sure").click(function(){
+            if($(".cover_wrap .psd").val() == ''){
+                layer.msg("请输入登录密码")
+            }else{
+                layer.msg("解绑成功")
+                $(".cover").hide()
+            }
+        })
+    })
+</script>
+</html>

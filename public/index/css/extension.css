@@ -1,0 +1,115 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #F4F4F4;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+.platform{
+    height: 1.3rem;
+    background: #fff;
+    padding: 0.2rem;
+    position: relative;
+    margin-bottom: 0.1rem;
+}
+.platform p:nth-child(1){
+    font-size: 0.3rem;
+	color: #333333;
+}
+.platform p:nth-child(2){
+    font-size: 0.26rem;
+    color: #999;
+    margin-top: 0.1rem;
+}
+.platform a{
+    display: block;
+    width: 1.5rem;
+	height: 0.4rem;
+	background-color: #7785eb;
+    border-radius: 0.1rem;
+    font-size: 0.24rem;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.4rem;
+    position: absolute;
+    top: 50%;
+    right: 0.2rem;
+    margin-top: -0.2rem;
+}
+.extension{
+    height: 0.88rem;
+    background: #fff;
+    margin-bottom: 0.2rem;
+    line-height: 0.88rem;
+    padding: 0 0.2rem;
+}
+.extension p{
+    font-size: 0.3rem;
+	color: #333333;
+}
+.extension p a{color: #333;}
+.extension p .iconfont{
+    font-size: 0.36rem;
+    color: #FA882B;
+    margin-right: 0.1rem;
+}
+.extension p .mui-icon-arrowright{
+    font-size: 0.36rem;
+    color: #1B1B1B;
+    float: right;
+    line-height: 0.88rem;
+}
+.extension p img{
+    width: 0.32rem;
+    margin-right: 0.14rem;
+    position: relative;
+    top: 0.02rem;
+}
+.extension.lianjie p .iconfont{
+    font-size: 0.32rem;
+    color: #31BE9F;
+    margin-right: 0.14rem;
+}
+.extension.xiaji p .iconfont{
+    font-size: 0.32rem;
+    color: #2ACE4D;
+    margin-right: 0.14rem;
+}
+.tabbar{
+    height: 1rem;
+    width: 100%;
+    max-width: 750px;
+    min-width: 320px;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tab_item{
+    width: 25%;
+    float: left;
+    text-align: center;
+    padding-top: 0.1rem;
+}
+.tab_item p .iconfont{
+    font-size: 0.46rem;
+    color: #666666;
+}
+.tab_item p{
+    font-size: 0.24rem;
+	color: #666;
+}
+.tab_item.active p{
+    color: #7785eb;
+}
+.tab_item.active p .iconfont{
+    color: #7785eb;
+}
+.mui-dtpicker{
+    bottom: -8px;
+}
+.mui-dtpicker{
+    box-shadow: none;
+}

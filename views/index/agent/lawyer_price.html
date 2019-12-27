@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懂贷咖</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/mui.picker.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__ICSS__/lawyer_price.css">
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/mui.picker.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <p class="price_ti">律师咨询服务<a href="javascript:;" class="add_price">添加链接价格</a></p>
+        <div class="price_list" data-link="1">
+            <p class="list_pti">律师咨询服务链接1</p>
+            <span class="iconfont iconshuxie edit"></span>
+            <p class="online_ques">在线咨询：</p>
+            <div class="price_bot online_price clearfix">
+                <div class="price_item">
+                    <p>￥11.88</p>
+                    <p>成本价格</p>
+                </div>
+                <div class="price_item">
+                    <p>￥5.00</p>
+                    <p>佣金</p>
+                </div>
+                <div class="price_item price_set">
+                    <p>￥<span>16.88</span></p>
+                    <p>推广价格</p>
+                </div>
+            </div>
+            <p class="hot_ques">热门问题：</p>
+            <div class="price_bot hot_price clearfix">
+                <div class="price_item">
+                    <p>￥11.88</p>
+                    <p>成本价格</p>
+                </div>
+                <div class="price_item">
+                    <p>￥5.00</p>
+                    <p>佣金</p>
+                </div>
+                <div class="price_item price_set">
+                    <p>￥<span>16.88</span></p>
+                    <p>推广价格</p>
+                </div>
+            </div>
+            <div class="btn_box clearfix">
+                <button class="spread_btn">立即推广</button>
+                <button class="delete_btn">删除</button>
+            </div>    
+        </div>
+        <div class="price_list" data-link="2">
+            <p class="list_pti">律师咨询服务链接2</p>
+            <span class="iconfont iconshuxie edit"></span>
+            <p class="online_ques">在线咨询：</p>
+            <div class="price_bot online_price clearfix">
+                <div class="price_item">
+                    <p>￥11.88</p>
+                    <p>成本价格</p>
+                </div>
+                <div class="price_item">
+                    <p>￥5.00</p>
+                    <p>佣金</p>
+                </div>
+                <div class="price_item price_set">
+                    <p>￥<span>16.88</span></p>
+                    <p>推广价格</p>
+                </div>
+            </div>
+            <p class="hot_ques">热门问题：</p>
+            <div class="price_bot hot_price clearfix">
+                <div class="price_item">
+                    <p>￥11.88</p>
+                    <p>成本价格</p>
+                </div>
+                <div class="price_item">
+                    <p>￥5.00</p>
+                    <p>佣金</p>
+                </div>
+                <div class="price_item price_set">
+                    <p>￥<span>16.88</span></p>
+                    <p>推广价格</p>
+                </div>
+            </div>
+            <div class="btn_box clearfix">
+                <button class="spread_btn">立即推广</button>
+                <button class="delete_btn">删除</button>
+            </div>    
+        </div>
+        <a class="revise" href="{:url('/index/Agent/setPrice')}">修改借款平台查询价格
+            <span class="mui-icon mui-icon-arrowright"></span>
+        </a>
+        <!-- 修改价格弹窗 -->
+        <div class="cover_box">
+            <div class="cover_wrap">
+                <input class="online" type="text" placeholder="请设置在线咨询推广价格" oninput="focus()">
+                <input class="hot" type="text" placeholder="请设置热门问题推广价格" oninput="focus()">
+                <div class="btn_box1 clearfix">
+                    <button class="cancel_btn">取消</button>
+                    <button class="sure_btn">确定</button>
+                </div>
+            </div>
+        </div>
+        <!-- 新增价格弹窗 -->
+        <div class="cover_box2">
+            <div class="cover_wrap">
+                <input type="text" value="在线咨询成本价：11.00" disabled>
+                <input class="online" type="text" placeholder="请设置在线咨询推广价格" oninput="focus()">
+                <input type="text" value="热门问题成本价：11.00" disabled>
+                <input class="hot" type="text" placeholder="请设置热门问题推广价格" oninput="focus()">
+                <input type="text" value="佣金=推广价-成本价" disabled>
+                <div class="btn_box1 clearfix">
+                    <button class="cancel_btn">取消</button>
+                    <button class="sure_btn">确定</button>
+                </div>
+            </div>
+        </div>
+        <!-- 推广 -->
+        <div class="cover_box1">
+            <div class="tuiguang">
+                <button>复制链接</button>
+                <button>查看二维码</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+        $(".edit").click(function(){
+            $(".cover_box").show()
+            var link = $(this).parents(".price_list").data("link");
+            $(".cover_box").attr("data-links",link)
+        })
+        $(".add_price").click(function(){
+            $(".cover_box2").show()
+        })
+        function focus(){
+            console.log($(".cover_box input").val())
+            if($(".cover_box input").val() != ''){
+                $(".cover_box sure_btn").removeAttr("disabled").css("background","rgba(119, 133, 235, 1)") 
+            }
+        }
+        $(".cover_box .cancel_btn").click(function(){
+            $(".cover_box").hide()
+        })
+        $(".cover_box2 .cancel_btn").click(function(){
+            $(".cover_box2").hide()
+        })
+        $(".cover_box2 .sure_btn").click(function(){
+            $(".cover_box2").hide()
+        })
+        $(".cover_box .sure_btn").click(function(){
+            if($(".cover_box input").val() != ''){
+                $(".cover_box sure_btn").removeAttr("disabled").css("background","rgba(119, 133, 235, 1)") 
+                var onlineprice = $(".cover_box .online").val();
+                var hotprice = $(".cover_box .hot").val();
+                var links = $(this).parents(".cover_box").data("links");
+                $(".price_list").each(function(){
+                    if($(this).attr("data-link") == $(".cover_box").attr("data-links")){
+                        $(this).find(".online_price").find(".price_set").find("span").html(onlineprice);
+                        $(this).find(".hot_price").find(".price_set").find("span").html(hotprice);
+                        console.log($(this).attr("data-link"))
+                        console.log($(".cover_box").attr("data-links"))
+                    }
+                    $(".cover_box").hide()
+                    $(".cover_box input").val('')
+                })
+            }
+        })
+        $(".spread_btn").click(function(){
+            $(".cover_box1").show()
+        })
+        $(".tuiguang button").click(function(){
+            $(".cover_box1").hide()
+        })
+    })
+</script>
+</html>

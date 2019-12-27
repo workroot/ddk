@@ -1,0 +1,44 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('backend/notetype/index')}">文章类型管理</a></li>
+            <li class="layui-this">添加文章类型</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('backend/notetype/save')}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">类型名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="tname" value="" required lay-verify="required" placeholder="请输入文章类型名称" class="layui-input">
+                        </div>
+                    </div>
+                   <div class="layui-form-item">
+                        <label class="layui-form-label">类型头标</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="thumb" value="" class="layui-input layui-input-inline" id="thumb">
+                            <button type="button" class="layui-btn" id="file_upload" data-type="1" style="height: 38px;"><i class="layui-icon">&#xe67c;</i>上传图片</button>
+                        </div>
+                    </div>
+					
+					<div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="descc" value="0" lay-verify="number" placeholder="排序" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

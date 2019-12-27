@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>详情</title>
+    <link href="__ICSS__/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__ICSS__/index.css?v=12346">
+</head>
+<style>
+    p {
+        font-size: 0.6rem;
+        margin-top: 0;
+        margin-bottom: 3px;
+        color: #000000;
+    }
+    .layui-input-block{
+        margin-left:0px;
+    }
+    .layui-form-item{
+        margin-bottom:0px;
+    }
+    .mui-scroll-wrapper{
+        position: initial;
+    }
+    .mui-scroll {
+        position: inherit;
+    }
+</style>
+<body>
+<div class="mui-content details">
+    <div class="details-img">
+        <div class="del">
+            <div class="head">
+                <img src="{$img}" />
+            </div>
+        </div>
+        <h4 class="title">{$data.name}</h4>
+    </div>
+
+    <div class="del-ew" style="margin-top:5%">
+        <ul class="">
+            <li>
+                <div class="del-img">
+                    <img src="__IIMG__/edu.png" width="25%">
+                    <p>平台额度</p>
+                    <p>{$data.amount}</p>
+                </div>
+            </li>
+            <li>
+                <div class="del-img">
+                    <img src="__IIMG__/nianlin.png" width="25%">
+                    <p>年龄要求</p>
+                    <p>{$data.age}</p>
+                </div>
+            </li>
+            <li>
+                <div class="del-img">
+                    <img src="__IIMG__/lixi.png" width="25%">
+                    <p>平台利息</p>
+                    <p>{$data.interest}</p>
+                </div>
+            </li>
+            <li>
+                <div class="del-img">
+                    <img src="__IIMG__/leix.png" width="25%">
+                    <p>平台类型</p>
+                    <p>{$data.platformType}</p>
+                </div>
+            </li>
+            <li>
+                <div class="del-img">
+                    <img src="__IIMG__/diya.png" width="25%">
+                    <p>是否需要抵押物</p>
+                    <p>{$data.ispawn}</p>
+                </div>
+            </li>
+            <li>
+                <div class="del-img">
+                    <img src="__IIMG__/zhengxin.png" width="25%">
+                    <p>是否查征信</p>
+                    <p>{$data.isonletter}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="del-list">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-media">
+                <img class="mui-media-object mui-pull-left" src="__IIMG__/fk.png" width="6%">
+                <div class="mui-media-body">
+                    <p class='mui-ellipsis'>放款方<span class="del-span">{$data.mechanism}</span></p>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <img class="mui-media-object mui-pull-left" src="__IIMG__/zhengxin01.png" width="6%">
+                <div class="mui-media-body">
+                    <p class='mui-ellipsis'>是否上征信<span class="del-span">{$data.isonletter}</span></p>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <img class="mui-media-object mui-pull-left" src="__IIMG__/lianx02.png" width="6%">
+                <div class="mui-media-body">
+                    <p class='mui-ellipsis'>平台联系方式<span class="del-span">{$data.phone}</span></p>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <img class="mui-media-object mui-pull-left" src="__IIMG__/chang03.png" width="6%">
+                <div class="mui-media-body">
+                    <p class='mui-ellipsis'>常用催收手段<span class="del-span">{$data.phone}</span></p>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <img class="mui-media-object mui-pull-left" src="__IIMG__/cy04.png" width="6%">
+                <div class="mui-media-body">
+                    <p class='mui-ellipsis'>是否持有金融牌照<span class="del-span">{$data.islicense}</span></p>
+                </div>
+            </li>
+
+            <li class="mui-table-view-cell mui-media">
+                <img class="mui-media-object mui-pull-left" src="__IIMG__/xx06.png" width="6%">
+                <div class="mui-media-body">
+                    <p class='mui-ellipsis'>平台催收力度总结多少星级</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="del-pl" style="">
+        <div class="del-title">
+            <span class="del-t">评论专区</span>
+            <span class="del-l comment" data-id="{$data.id}" ><img src="__IIMG__/pinglun.png" style="width: 13%;margin-right: 8px;">写评论</span>
+        </div>
+        <div id="refreshContainer" class="mui-scroll-wrapper reply" style="">
+            <div class="mui-scroll">
+                <!--数据列表-->
+                <ul class="mui-table-view mui-table-view-chevron lai">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+<script src="__PUBLIC__/js/jquery.min.js"></script>
+<script src="__IJS__/mui.min.js"></script>
+<script src="__PUBLIC__/layui/layui.all.js"></script>
+<script type="text/javascript">
+    page = 0;
+    limit = 5;
+    pullupRefresh();
+
+    mui.init({
+        pullRefresh: {
+            container: "#refreshContainer",//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+            up: {
+                contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+                callback: pullupRefresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+            }
+        }
+    });
+    function pullupRefresh() {
+        var cid = "{$data.id}";
+        setTimeout(function () {
+            page++;
+            data(cid);
+        },500);
+    }
+
+
+    function data(cid){
+        $.ajax({
+            url: '{:url("/api/comment/index")}',
+            type: 'post',
+            data: {"cid": cid, "page": page, "limit": limit},
+            dataType: 'json',
+            success: function (json) {
+                if (json.data.length < limit) {
+                    mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+                }else{
+                    mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+                }
+                $.each(json.data, function (index, obj) {
+                    var user_name = "<?php echo Session('user_name') ?>";
+                   var reply = '';
+                    $.each(obj.reply,function(index,re){
+                        reply += '<li>'+ re.uname +'<span style="margin-left: 3px;color: #999;">@'+ re.pname +'</span><a href="javascript:void(0)" style="color: #4b8beb;" class="'+ (re.uname == user_name ? "":'huifus') +'" data-commentId="' + obj.id + '" data-id="'+ obj.cid +'" data-replyid="'+ re.uid +'" data-name="'+ re.uname +'"> ' + (re.uname == user_name ? "":'回复') +':</a><span style="color:#878787">'+ re.content +'</span></li>';
+                    });
+                    var clas = obj.isawe ? '': 'awesome';
+                    var img = obj.isawe ?'__IIMG__/zan2.png':'__IIMG__/zan.png';
+                    var html = '<li><div class="del-ht">\n' +
+                        '                    <div class="del-e">\n' +
+                        '                        <span class="del-t">' + obj.uname + '<p style="color:#8d8d8d">' + new Date(parseInt(obj.createdAt) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ') + '</p></span>\n' +
+                        '                        <div class="del-s"><img src="__IIMG__/huifu.png" style="width:41%;"><span style="display: block;float: right;font-size: 0.7rem;margin-top: 1px;">' + obj.responses + '</span></div>\n' +
+                        '                        <div class="del-l '+ clas + '" data-id="' + obj.id + '"><img src="' + img + '" style="width:41%;"><span style="display: block;float: right;font-size: 0.7rem;margin-top: 1px;">' + obj.awesome + '</span></div>\n' +
+                        '                    </div>\n' +
+                        '                    <div class="del-conten">\n' +
+                        '                        <p style="line-height: 144%;color:#8d8d8d;letter-spacing:1px;">' + obj.content + ' <a href="javascript:void(0)" style="color: #4b8beb;" class="'+ (obj.uname == user_name ? "":'huifus') +'" data-id="' + obj.cid + '" data-commentId="' + obj.id + '" data-replyid="' + obj.uid + '" data-name="' + obj.uname + '"> ' + (obj.uname == user_name ? "":'回复') +'</a></p>\n' +
+                        '                    </div>\n' +
+                        '                    <div class="del-huifu">\n' +
+                        '                        <ul>\n' + reply +
+                        '                        </ul>\n'+
+                        '                    </div>\n' +
+                        '                </div></li>';
+                    $('.lai').append(html);
+                });
+            }
+        })
+    }
+
+$(document).ready(function(){
+    $('.comment').on('click',function(){
+        var id = $(this).attr('data-id');
+        layer.open({
+            type: 1,
+            area: ['350px', '200px'],
+            btn:['确定','取消'],
+            content: '<form class="layui-form" action=""> ' +
+                '<div class="layui-form-item layui-form-text">' +
+                '<div class="layui-input-block">'+
+                '<textarea name="content" placeholder="评论内容" class="layui-textarea"></textarea>'+
+                '</div>'+
+                '</div>'+
+                '<input type="hidden" name="cid" value="'+id+'">'+
+                '</form>'
+            ,yes: function(index, layero){
+                var content = $('textarea[name="content"]').val();
+                $.ajax({
+                    url:'/api/comment/save',
+                    type:'post',
+                    dataType:'json',
+                    data:{'content':content,'cid':id},
+                    success:function(info){
+                        if(info.code == 0){
+                            layer.msg(info.message,{tiem:500},function(){
+                                window.location.reload();
+                            });
+                            layer.close(index);
+                        }else{
+                            layer.msg(info.message,{tiem:500});
+                        }
+                    }
+                })
+            }
+        });
+    });
+
+    mui(".mui-scroll").on('tap','.awesome',function(){
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url:"{:url('/api/awesome/save')}",
+            type:'post',
+            data:{'commentId':id},
+            dataType:'json',
+            success:function(info){
+                if(info.code == 0){
+                    window.location.reload();
+                }else{
+                    layer.msg(info.message,{tiem:500});
+                }
+            }
+        })
+    });
+    mui(".mui-scroll").on('tap','.huifus',function(){
+        var id = $(this).attr('data-id');
+        var replyid = $(this).attr('data-replyid');
+        var name = $(this).attr('data-name');
+        var commentId = $(this).attr('data-commentId');
+        layer.open({
+            type: 1,
+            area: ['350px', '200px'],
+            btn:['确定','取消'],
+            content: '<form class="layui-form" action=""> ' +
+                '<div class="layui-form-item layui-form-text">' +
+                '<div class="layui-input-block">'+
+                '<textarea name="content" placeholder="@'+name+'" class="layui-textarea"></textarea>'+
+                '</div>'+
+                '</div>'+
+                '</form>'
+            ,yes: function(index, layero){
+                var content = $('textarea[name="content"]').val();
+                $.ajax({
+                    url:'/api/reply/save',
+                    type:'post',
+                    dataType:'json',
+                    data:{'cid':id,'replyid':replyid,'pname':name,'commentId':commentId,'content':content},
+                    success:function(info){
+                        if(info.code == 0){
+                            layer.msg(info.message,{tiem:500},function(){
+                                window.location.reload();
+                            });
+                            layer.close(index);
+                        }else{
+                            layer.msg(info.message,{tiem:500});
+                        }
+                    }
+                })
+            }
+        });
+
+    });
+});
+
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懂贷咖</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/mui.picker.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__ICSS__/withdrawal.css">
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/mui.picker.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 未绑定支付宝 -->
+        <div class="bind_alipay clearfix">
+            <img src="__IIMG__/dailishang/alipay_logos.png" alt="">
+            <input type="text" name="" id="" placeholder="请输入支付宝姓名">
+            <input type="text" name="" id="" placeholder="请输入支付宝号码">
+            <button class="bind_btn">确认绑定</button>
+        </div>
+        <!-- 已绑定 -->
+        <div>
+            <div class="withdrawal_box">
+                <p class="withdrawal_ti">提现金额</p>
+                <p class="withdrawal_money"><span>￥</span><input type="text"></p>
+                <p class="remainder_num">余额：700.00</p>
+            </div>
+            <div class="withdrawal_way">
+                <img src="__IIMG__/dailishang/alipay_logo.png" alt="">刘凌&nbsp;&nbsp;&nbsp;13125074189
+                <i class="iconfont iconzhengque"></i>
+            </div>
+            <div class="withdrawal_way">
+                <img src="__IIMG__/dailishang/bank_logo_gs.png" alt="">中国工商银行<span>尾号8596</span>
+                <i class="iconfont iconzhengque active"></i>
+            </div>
+            <p class="to_bank"><a href="">管理银行卡》</a></p>
+            <button class="sure_btn">确认提现</button>
+        </div>    
+    </div>
+</body>
+<script>
+    $(function(){
+        $(".withdrawal_way").click(function(){
+            $(this).find(".iconfont").addClass("active");
+            $(this).siblings(".withdrawal_way").find(".iconfont").removeClass("active");
+        })
+    })
+</script>
+</html>

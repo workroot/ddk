@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="__PUBLIC__/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <script src="__AJS__/jquery.min.js"></script>
+    <script src="__PUBLIC__/layer/layer.js"></script>
+    <script src="__IJS__/mui.min.js"></script>
+</head>
+<body>
+<style>
+    .layui-input-block{
+         margin-left: 0px;
+         min-height: 0px;
+    }
+    .layui-layer-page .layui-layer-content{
+        overflow: inherit;
+    }
+</style>
+<table class="layui-table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>用户</th>
+        <th>内容</th>
+        <th>创建时间</th>
+        <th width="8%">操作</th>
+    </tr>
+    </thead>
+    <tbody style="text-align: center;">
+    {foreach name="data" item="vo"}
+    <tr>
+        <td style="width:4%">{$vo.id}</td>
+        <td style="width:10%">{if condition="isset($vo.uid) && $vo.uid > 0"}{$vo.uname}{else/}总部{/if}
+        </td>
+        <td style="width:5%">{$vo.content}</td>
+        <td style="width:10%">{$vo.createdAt|date="Y-m-d H:i:s",###}</td>
+        <td style="text-align:center; width:10%">
+            <a href="javascript:void(0);"
+               class="layui-btn layui-btn-xs layui-btn-normal huifus" data-commentId="{$vo.commentId}" data-id="{$vo.cid}" data-replyid="{$vo.uid}" data-name="{$vo.uname}">回复</a>
+            <a href="{:url('backend/comment/del',['id'=>$vo['id'],'cid'=>$vo['commentId']])}"
+               class="layui-btn layui-btn-danger layui-btn-xs ajax-delete">删除</a>
+        </td>
+    </tr>
+    {/foreach}
+    </tbody>
+</table>
+</body>
+<script>
+    $(".huifus").on('click',function(){
+        var id = $(this).attr('data-id');
+        var replyid = $(this).attr('data-replyid');
+        var name = $(this).attr('data-name');
+        var commentId = $(this).attr('data-commentId');
+        layer.open({
+            type: 1,
+            area: ['350px', '200px'],
+            btn:['确定','取消'],
+            scrollbar: false,
+            content: '<form class="layui-form" action=""> ' +
+                '<div class="layui-form-item layui-form-text">' +
+                '<div class="layui-input-block">'+
+                '<textarea name="contents" placeholder="@'+name+'" class="layui-textarea"></textarea>'+
+                '</div>'+
+                '</div>'+
+                '</form>'
+            ,yes: function(index, layero){
+                var contents = $('textarea[name="contents"]').val();
+                $.ajax({
+                    url:'/backend/platform/reply',
+                    type:'post',
+                    dataType:'json',
+                    data:{'cid':id,'replyid':replyid,'pname':name,'commentId':commentId,'content':contents},
+                    success:function(info){
+                        if(info.code == 0){
+                            layer.msg(info.message,{tiem:300},function(){
+                                window.location.reload();
+                            });
+                            layer.close(index);
+                        }else{
+                            layer.msg(info.message,{tiem:300});
+                        }
+                    }
+                })
+            }
+        });
+
+    });
+</script>
+</html>

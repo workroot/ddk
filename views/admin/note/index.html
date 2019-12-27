@@ -1,0 +1,91 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">文章列表</li>
+            <li class=""><a href="{:url('backend/note/add')}">添加文章</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                <form class="layui-form layui-form-pane" action="{:url('backend/note/index')}" method="get">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+					
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+                    </div>
+                </form>
+                <hr>
+
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                       <th>标题</th>
+						 <th>简介</th>
+						 <th>分类</th>
+                       	<th>排序</th>
+						<th>时间</th>
+                        <th width="8%">操作</th>
+                       
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="note_list" item="vo"}
+                    <tr>
+                        <td style="width:4%">{$vo.id}</td>
+                     	<td style="width:20%"><b><a style="color:#007aff" href="javascript:title({$vo.id})">{$vo.title}</a></b></td>
+						<td style="width:20%">{$vo.jianjie}</td>
+						<td style="width:10%">{$vo.tname}</td>
+                        <td style="width:4%">{$vo.descc}</td>
+                        <td  style="width:10%">{$vo.lasttime|date="Y-m-d H:i:s",###}</td>
+                        <td style="text-align:center">
+                            <a href="{:url('backend/note/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                            <a href="{:url('backend/note/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+                <!--分页-->
+                {$note_list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+ <script>
+            var lis=document.getElementById("lis");
+            var marks=document.getElementById("marks");
+
+            function title(id){
+                $.ajax({
+                    url:"{:url('backend/note/title')}",
+                    type:'post',
+                    dateType:'json',
+                    data:{'id':id},
+                    success:function(json){
+                        if(json.code == 0){
+                            layer.open({
+                                type: 1,
+                                title: false,
+                                area: ['800px','900px'], //宽高
+                                closeBtn: 0,
+                                shadeClose: true,
+                                skin: 'yourclass',
+                                content: '<div style="padding:50px;"><h2 class="detail-title" style="box-sizing: border-box; font-size: 24px; text-align: center; font-weight: 400; padding-right: 40px; white-space: normal;padding-bottom:20px;"></br>'+json.data.title+'</h2><div style="line-height: 40px;">'+json.data.content+'</div></div>'
+                            });
+                        }else{
+                            layer.msg(json.msg);
+                        }
+                    }
+                })
+            }
+ </script>
+{/block}

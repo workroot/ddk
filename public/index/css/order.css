@@ -1,0 +1,110 @@
+@charset "UTF-8";
+body{font-family: PingFang-SC-Regular;background: #F1F1F1;}
+.container{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0.1rem 0 1rem 0;
+}
+.time_box{
+    height: 0.64rem;
+    background: #fff;
+    border-bottom: 0.02rem solid #f1f1f1;
+    padding: 0 0.2rem;
+    line-height: 0.64rem;
+}
+.time_ti{
+    font-size: 0.28rem;
+    color: #333333;
+    float: left;
+}
+.choose_time{
+    width: 6.2rem;
+    height: 0.36rem;
+    float: right;
+    position: relative;
+    margin-top: 0.14rem;
+    background: #f1f1f1;
+}
+.choose_time input{
+    width: 40%;
+    float: left;
+    height: 0.36rem;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    font-size: 0.24rem;
+    line-height: 0.4rem;
+    margin: 0;
+    padding: 0 0 0 0.2rem;
+}
+.choose_time img{
+    width: 0.26rem;
+    position: absolute;
+    top: 50%;
+    right: 0.06rem;
+    transform: translateY(-50%);
+}
+.my_order{
+    padding: 0.2rem 0.5rem;
+    font-size: 0.28rem;
+    font-weight: bold;
+    color: #333333;
+    position: relative;
+}
+.my_order:before{
+    content: '';
+    width: 0.04rem;
+    height: 0.32rem;
+    background-color: #6c25c8;
+    border-radius: 0.01rem;
+    position: absolute;
+    top: 50%;
+    left: 0.4rem;
+    transform: translateY(-50%);
+}
+.order_box{
+    padding: 0 0.2rem;
+}
+.order_list{
+    background-color: #ffffff;
+    border-radius: 0.18rem;
+    padding: 0.06rem 0.2rem;
+    position: relative;
+    margin-bottom: 0.3rem;
+}
+.order_list p{
+    font-size: 0.26rem;
+    color: #333333;
+    line-height: 0.44rem;
+}
+.order_list p span{
+    color: #6c25c8;
+}
+.order_list p.order_time{
+    font-size: 0.24rem;
+    color: #888888;
+}
+.score_box{
+    position: absolute;
+    top: 50%;
+    right: 0.6rem;
+    transform: translateY(-50%);
+}
+.score_num{
+    width: 1.23rem;
+    height: 0.96rem;
+    background: url("../img/score_bg1.png");
+    background-size: 100%;
+    font-size: 0.32rem;
+    color: #905620;
+    line-height: 0.72rem;
+    text-align: center;
+    margin: 0 auto;
+}
+.score_box p{
+    font-size: 0.26rem;
+    color: #333333;
+    text-align: center;
+    margin-top: 0.1rem;
+}

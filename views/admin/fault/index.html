@@ -1,0 +1,77 @@
+{extend name="base" /}
+{block name="body"}
+
+<div class="layui-body">
+    <!--tab标签-->
+    <style>
+        .layui-input-block{
+            margin-left: 0px;
+            min-height: 0px;
+        }
+        .layui-layer-page .layui-layer-content{
+            overflow: inherit;
+        }
+    </style>
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">过失数据</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form layui-form-pane" id="myform" action="{:url('backend/fault/index')}" method="get">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyWord" value="{if condition="isset($get['keyWord']) && !empty($get['keyWord'])"}{$get['keyWord']}{/if}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开始时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input start_time" name="start_time" id="date1" value="{if condition="isset($get['start_time']) && !empty($get['start_time'])"}{$get['start_time']}{/if}">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">结束时间</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input end_time" name="end_time" id="date2" value="{if condition="isset($get['end_time']) && !empty($get['end_time'])"}{$get['end_time']}{/if}">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+                    </div>
+                </form>
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>平台</th>
+                        <th>联系方式</th>
+                        <th>创建时间</th>
+                        <th width="8%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                    {foreach name="data" item="vo"}
+                    <tr>
+                        <td style="width:4%">{$vo.id}</td>
+                        <td style="width:10%">{$vo.title}</td>
+                        <td style="width:8%">{$vo.mobile}</td>
+                        <td  style="width:10%">{$vo.createdAt|date="Y-m-d H:i:s",###}</td>
+                        <td style="text-align:center; width:15%">
+                            <a href="https://www.baidu.com/s?wd={$vo.title}" target="_blank" class="layui-btn layui-btn-xs layui-btn-normal">百度一下</a>
+                            <a href="{:url('backend/company/add',['name'=>$vo['title']])}" class="layui-btn layui-btn-xs">添加公司</a>
+                            <a href="{:url('backend/fault/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-xs ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+                <!--分页-->
+                {$data->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,77 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">代理商类型管理</li>
+            <li class=""><a href="{:url('backend/agent/add')}">添加代理商类型</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+                <form class="layui-form layui-form-pane" action="{:url('backend/agent/index')}" method="get">
+				
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+						
+                    </div>
+                </form>
+                <hr>
+
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th>代理商类型名称</th>
+                        <th>是否可以OEM名称</th>
+                        <th>OEM名称</th>
+                        <th>开启自定义</th>
+                        <th>是否开启二维码</th>
+                        <th>二维码</th>
+                        <th>是否可以OEM价格</th>
+                        <th>是否可以OEM标题</th>
+                        <th>是否可以OEM说明</th>
+                        <th>是否开启分享</th>
+                        <th>通话数量</th>
+                        <th>排序</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.agent_name}</td>
+						<td>{php}echo $vo['isoem_name']==1 ? '可以' : '不可以';{/php}</td>
+                        <td>{$vo.rename}</td>
+						<td>{php}echo $vo['isoem_ewm']==1 ? '开启' : '不开启';{/php}</td>
+						<td>{php}echo $vo['isopen_ewmo']==1 ? '可以' : '不可以';{/php}</td>
+						<td>{if condition="isset($vo.thumb) and !empty($vo.thumb)"}<img style="height:50px;" src="{$vo.thumb}"/>{/if}</td>
+						<td>{php}echo $vo['isoem_price']==1 ? '可以' : '不可以';{/php}</td>
+						<td>{php}echo $vo['isoem_title']==1 ? '可以' : '不可以';{/php}</td>
+						<td>{php}echo $vo['isoem_marks']==1 ? '可以' : '不可以';{/php}</td>
+                        <td>{php}echo $vo['is_share']==1 ? '可以' : '不可以';{/php}</td>
+                        <td>{$vo.nums}</td>
+                        <td>{$vo.descc}</td>
+						<td>
+                            <a href="{:url('backend/agent/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
+                            <a href="{:url('backend/agent/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+				 <!--分页-->
+                {$list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懂贷咖</title>
+    <link rel="stylesheet" href="__ICSS__/mui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/iconfont.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+    <link rel="stylesheet" href="__ICSS__/user_agent.css">
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="user_top">
+            <p class="username">
+                <img src="__IIMG__/userhead_nan.png" alt="">小欧小
+                <span class="iconfont iconxiaoxi3"></span>
+            </p>
+            <p class="remainder">700.00</p>
+            <p class="remainder_txt">账户余额</p>
+            <p class="remainder_total">累计总收入：12000</p>
+            <button>立即提现</button>
+        </div>
+        <div class="info_box">
+            <p class="info_list">
+                <img src="__IIMG__/dailishang/icon_info.png" alt="">完善个人信息
+                <a href="{:url('/index/Agent/userinfo')}">
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+        </div>
+        <div class="info_box">
+            <p class="info_list">
+                <img src="__IIMG__/dailishang/icon_top.png" alt="">我的上级
+                <span>131****2563</span>
+            </p>
+            <p class="info_list">
+                <img src="__IIMG__/dailishang/icon_bot.png" alt="">我的下级
+                <a href="{:url('/index/Agent/subordinate')}">
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+        </div>
+        <div class="info_box">
+            <p class="info_list">
+                <img src="__IIMG__/dailishang/icon_shouce.png" alt="">操作手册
+                <a href="{:url('/index/Agent/handbook')}">
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+        </div>
+        <div class="info_box">
+            <p class="info_list">
+                <img src="__IIMG__/dailishang/icon_question.png" alt="">常见问题
+                <a href="{:url('/index/Agent/commonProblem')}">
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+            <p class="info_list">
+                <img src="__IIMG__/dailishang/icon_contact.png" alt="">联系我们
+                <a href="{:url('/index/Agent/contact')}">
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+        </div>
+        <div class="info_box">
+            <p class="info_list">
+                <img src="__IIMG__/dailishang/icon_pass.png" alt="">密码修改
+                <a href="{:url('/index/Agent/changePassword')}">
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </a>
+            </p>
+        </div>
+        <div class="bot_box">
+            <div class="set_out">
+                <a href="javascript:;">切换账号</a>
+            </div>
+            <div class="set_out sign_out">
+                <a href="javascript:;">退出登录</a>
+            </div>
+        </div>
+        <div class="tabbar">
+            <div class="tab_item">
+                <p><span class="iconfont iconmingxi"></span></p>
+                <p>收入明细</p>
+            </div>
+            <div class="tab_item">
+                <p><span class="iconfont iconchanpintuiguang"></span></p>
+                <p>产品推广</p>
+            </div>
+            <div class="tab_item">
+                <p><span class="iconfont iconsee-icon-m3-notice-fill"></span></p>
+                <p>平台公告</p>
+            </div>
+            <div class="tab_item active">
+                <p><span class="iconfont iconicon-test"></span></p>
+                <p>个人中心</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+        $(".tab_item").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+        })
+    })
+</script>
+</html>
